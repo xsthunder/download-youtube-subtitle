@@ -15,7 +15,7 @@ python version of [algolia/youtube-captions-scraper: Fetch youtube user submitte
 
 `dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans`
 
-```
+```text
 https://youtube.com/get_video_info?video_id=5tKOV0KqPlg
 ---------00:01----------
 All right, well, uh,
@@ -26,20 +26,20 @@ let's get back to real life
 or whatever we're calling
 this thing now.
 或我们现在所说的这个东西。 
-...
+// continue
 ```
 
 `dl-youtube-cc 5tKOV0KqPlg --translation False --to_json=True`
 
-```
+```json
 [
     {
         "start": "1.367",
         "dur": "3.137",
         "text": "All right, well, uh,\nlet's get back to real life"
     },
-    {
-	...
+]
+// continue
 ```
 
  
@@ -53,7 +53,7 @@ this thing now.
 
 ### run in cli
 
-```
+```bash
 SYNOPSIS
     dl-youtube-cc VIDEOID <flags>
 
@@ -80,17 +80,17 @@ FLAGS
         bool, default to False, export caption to json
 ```
 
-### use in code
+### Use in Code
 
-```
+```python
 import download_youtube_subtitle.common as common
 import download_youtube_subtitle.main as download_youtube_subtitle
 # ...
 ```
 
-## development
+## Development
 
-### env setup
+### Environment Setup
 
 [for conda](./config/create-env.sh)
 
@@ -98,22 +98,22 @@ import download_youtube_subtitle.main as download_youtube_subtitle
 pip install 'fire' 'requests' 'IPython'
 ```
 
-### usage
+### Usage
 
 ```
 python main.py -h
 python main.py VIDEOID
 ```
 
-### test
+### Tests
 
 ```
-cd test
+cd tests
 ./run.sh
 ./test_cli.sh
 ```
 
-#### ref 
+#### Ref 
 
 [deployment - How can I use setuptools to generate a console_scripts entry point which calls `python -m mypackage`? - Stack Overflow](https://stackoverflow.com/questions/27784271/how-can-i-use-setuptools-to-generate-a-console-scripts-entry-point-which-calls)
 
