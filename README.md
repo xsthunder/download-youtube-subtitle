@@ -78,6 +78,14 @@ FLAGS
         bool, default to False, export caption to json
 ```
 
+### use in code
+
+```
+import download_youtube_subtitle.common as common
+import download_youtube_subtitle.main as download_youtube_subtitle
+# ...
+```
+
 ## development
 
 ### env setup
