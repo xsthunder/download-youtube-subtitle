@@ -109,10 +109,19 @@ def get_valid_filename(s):
     s = str(s).strip().replace(' ', '_')
     return re.sub(r'(?u)[^-\w.]', '', s)
 
+def parseVideoID(videoID):
+    if 'youtu' in videoID:
+        videoID = re.search('v=([^&]+)', videoID).group(1)
+
+    video_link = f'https://www.youtube.com/watch?v={videoID}'
+    data_link=f"https://youtube.com/get_video_info?video_id={videoID}"
+    return videoID, video_link, data_link
+
 import fire
 import sys
 from functools import partial
 import json
+import re
 def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to_json=False):
     """
     download youtube closed caption(subtitles) by videoID
@@ -132,17 +141,17 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
     to_json: bool, default to False, export caption to json
 
     """
-    if 'youtu' in videoID:
-        data_link = videoID
-    else :
-        data_link=f"https://youtube.com/get_video_info?video_id={videoID}"
+
+    videoID, video_link, data_link = parseVideoID(videoID)
     data=get_data(data_link)
     captionTracks, title = get_tracks_title(data)
 
     info = partial(print, "INFO: ")
 
+    info("available caption(s) are")
+
     for caption in captionTracks:
-        info(caption['name']['simpleText'], 'available')
+        info(caption['name']['simpleText'], '')
 
     info('using',captionTracks[0]['name']['simpleText'] )
 
@@ -172,7 +181,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
         return
 
     pfile = partial(print, file=f)
-    pfile(data_link, file=f)
+    pfile(video_link, file=f)
     for sent in subtitle:
         each_sent(sent, file=f)
         pfile()
