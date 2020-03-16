@@ -9,7 +9,7 @@ setuptools.setup(
     name="download-youtube-subtitle", # Replace with your own username
     version="0.0.1",
     author="xsthunder",
-    author_email="xsthunder",
+    author_email="xsthunder@outlook.com",
     description="download youtube subtitles(closed caption, cc) as txt or json",
     long_description=long_description,
     long_description_content_type="text/markdown",
