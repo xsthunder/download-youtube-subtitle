@@ -49,7 +49,7 @@ this thing now.
 2. pip install download_youtube_subtitle-0.0.1-py3-none-any.whl
 3. `dl-youtube-cc -h`
 
-### usage example
+### use in cli
 
 ```
 SYNOPSIS
