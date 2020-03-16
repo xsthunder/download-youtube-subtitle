@@ -1,8 +1,12 @@
 # Download Youtube Subtitle [![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle.svg?branch=master)](https://travis-ci.com/xsthunder/download-youtube-subtitle)
 
-1. Download youtube subtitles(closed caption, cc) or srt as txt or json. 
-2. Support export translate language at the same time which is useful for language study.
+Download youtube subtitles(closed caption, cc) or srt as txt or json. 
+
+### features
+
+1. Support export translate language at the same time which is useful for language study.
 3. Support proxy, follow the step at [Using Anaconda behind a company proxy — Anaconda documentation](https://docs.anaconda.com/anaconda/user-guide/tasks/proxy/).
+4. full test with traivis [![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle.svg?branch=master)](https://travis-ci.com/xsthunder/download-youtube-subtitle) to make sure things are on rail.
 
 python version of [algolia/youtube-captions-scraper: Fetch youtube user submitted or fallback to auto-generated captions](https://github.com/algolia/youtube-captions-scraper)
  
@@ -87,6 +91,7 @@ pip install 'fire' 'requests' 'IPython'
 ### usage
 
 ```
+python main.py -h
 python main.py VIDEOID
 ```
 
