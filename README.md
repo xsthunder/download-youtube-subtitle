@@ -1,4 +1,6 @@
-# download youtube subtitle
+# Download Youtube Subtitle [![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle.svg?branch=master)](https://travis-ci.com/xsthunder/download-youtube-subtitle)
+
+download youtube subtitles(closed caption, cc) or srt as txt or json
 
 python version of [algolia/youtube-captions-scraper: Fetch youtube user submitted or fallback to auto-generated captions](https://github.com/algolia/youtube-captions-scraper)
  
