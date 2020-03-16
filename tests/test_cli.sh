@@ -1,3 +1,8 @@
+if test $TRAVIS
+then
+    source $HOME/miniconda/etc/profile.d/conda.sh
+    conda activate test
+fi
 python ../main.py 5tKOV0KqPlg --save_to_file=False
 python ../main.py 5tKOV0KqPlg --output_file='test.txt'
 python ../main.py 5tKOV0KqPlg --to_json=True 
