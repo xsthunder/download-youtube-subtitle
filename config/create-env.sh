@@ -5,4 +5,4 @@ then
 fi
 
 # py3.7 for asyncio.WindowsProactorEventLoopPolicy() support
-conda create -n test fire requests -y
+conda create -n test fire requests -c conda-forge -y
