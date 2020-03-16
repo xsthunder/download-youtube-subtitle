@@ -1,6 +1,8 @@
 data/
 *.test_output
 *.txt
+*.json
+!lang_code.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
