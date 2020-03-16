@@ -1,8 +1,43 @@
 # Download Youtube Subtitle [![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle.svg?branch=master)](https://travis-ci.com/xsthunder/download-youtube-subtitle)
 
-download youtube subtitles(closed caption, cc) or srt as txt or json
+1. Download youtube subtitles(closed caption, cc) or srt as txt or json. 
+2. Support export translate language at the same time which is useful for language study.
+3. Support proxy, follow the step at [Using Anaconda behind a company proxy — Anaconda documentation](https://docs.anaconda.com/anaconda/user-guide/tasks/proxy/).
 
 python version of [algolia/youtube-captions-scraper: Fetch youtube user submitted or fallback to auto-generated captions](https://github.com/algolia/youtube-captions-scraper)
+ 
+ 
+### Example
+
+`--translation zh-Hans`
+
+```
+https://youtube.com/get_video_info?video_id=5tKOV0KqPlg
+---------00:01----------
+All right, well, uh,
+let's get back to real life
+好吧，恩，让我们回到现实生活中
+
+---------00:04----------
+or whatever we're calling
+this thing now.
+或我们现在所说的这个东西。 
+...
+```
+
+`--translation False --to_json=True`
+
+```
+[
+    {
+        "start": "1.367",
+        "dur": "3.137",
+        "text": "All right, well, uh,\nlet's get back to real life"
+    },
+    {
+	...
+```
+
  
 ## run
 
@@ -37,35 +72,6 @@ FLAGS
         bool or string, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
     --to_json=TO_JSON
         bool, default to False, export caption to json
-```
-
-### example
-
-```
-https://youtube.com/get_video_info?video_id=5tKOV0KqPlg
----------00:01----------
-All right, well, uh,
-let's get back to real life
-好吧，恩，让我们回到现实生活中
-
----------00:04----------
-or whatever we're calling
-this thing now.
-或我们现在所说的这个东西。 
-...
-```
-
-`--to_json=True`
-
-```
-[
-    {
-        "start": "1.367",
-        "dur": "3.137",
-        "text": "All right, well, uh,\nlet's get back to real life"
-    },
-    {
-	...
 ```
 
 ## development
