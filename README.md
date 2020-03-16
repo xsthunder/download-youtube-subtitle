@@ -13,7 +13,7 @@ python version of [algolia/youtube-captions-scraper: Fetch youtube user submitte
  
 ### Example
 
-`dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans`
+`dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.txt`
 
 ```text
 https://youtube.com/get_video_info?video_id=5tKOV0KqPlg
@@ -29,7 +29,8 @@ this thing now.
 // continue
 ```
 
-`dl-youtube-cc 5tKOV0KqPlg --translation False --to_json=True`
+`dl-youtube-cc 5tKOV0KqPlg --translation False --to_json=True` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.json`
+
 
 ```json
 [
@@ -62,7 +63,7 @@ DESCRIPTION
     dl-youtube-cc 5tKOV0KqPlg --save_to_file=False # print stuff in console
     dl-youtube-cc 5tKOV0KqPlg --output_file='test.txt' # print stuff in named file
     dl-youtube-cc 5tKOV0KqPlg --to_json=True # print stuff in json
-    dl-youtube-cc 5tKOV0KqPlg --translation 'ja' # print stuff in named file
+    dl-youtube-cc 5tKOV0KqPlg --translation 'ja' # use japanese translation, see ./lang_code for full list
     dl-youtube-cc 5tKOV0KqPlg --translation False # without translation
 
 POSITIONAL ARGUMENTS
@@ -94,20 +95,20 @@ import download_youtube_subtitle.main as download_youtube_subtitle
 
 [for conda](./config/create-env.sh)
 
-```
+```bash
 pip install 'fire' 'requests' 'IPython'
 ```
 
 ### Usage
 
-```
+```bash
 python main.py -h
 python main.py VIDEOID
 ```
 
 ### Tests
 
-```
+```bash
 cd tests
 ./run.sh
 ./test_cli.sh
