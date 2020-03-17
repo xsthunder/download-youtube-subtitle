@@ -122,7 +122,7 @@ import sys
 from functools import partial
 import json
 import re
-def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to_json=False):
+def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to_json=False, caption_num=0):
     """
     download youtube closed caption(subtitles) by videoID
 
@@ -139,6 +139,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
     save_to_file: bool, default to True, True or False
     translation: bool or string, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
     to_json: bool, default to False, export caption to json
+    caption_num: number, default to 0, choose the caption
 
     """
 
@@ -148,19 +149,20 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
 
     info = partial(print, "INFO: ")
 
-    info("available caption(s) are")
+    info("available caption(s)(can be chosed by caption_num):")
 
-    for caption in captionTracks:
-        info(caption['name']['simpleText'], '')
+    for i, caption in enumerate(captionTracks):
+        info(f"\t{i}.", caption['name']['simpleText'])
 
-    info('using',captionTracks[0]['name']['simpleText'] )
+    caption = captionTracks[caption_num]
+    info('using',f"{caption_num}.", caption['name']['simpleText'] )
 
-    baseUrl = captionTracks[0]['baseUrl']
+    baseUrl = caption['baseUrl']
     transcript = requests.get(baseUrl)
     subtitle = parseTranscript(transcript)
 
     if translation:
-        baseUrl = captionTracks[0]['baseUrl'] + '&tlang=' + translation
+        baseUrl = caption['baseUrl'] + '&tlang=' + translation
         transcript = requests.get(baseUrl)
         subtitle_cn = parseTranscript(transcript)
         for sub, cn in zip(subtitle, subtitle_cn):
