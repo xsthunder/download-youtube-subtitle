@@ -1,109 +1,656 @@
-[{'languageCode': 'tr', 'languageName': {'simpleText': '土耳其文'}},
- {'languageCode': 'tk', 'languageName': {'simpleText': '土庫曼文'}},
- {'languageCode': 'zh-Hant', 'languageName': {'simpleText': '中文（繁體字）'}},
- {'languageCode': 'zh-Hans', 'languageName': {'simpleText': '中文（簡體字）'}},
- {'languageCode': 'da', 'languageName': {'simpleText': '丹麥文'}},
- {'languageCode': 'eu', 'languageName': {'simpleText': '巴斯克文'}},
- {'languageCode': 'ja', 'languageName': {'simpleText': '日文'}},
- {'languageCode': 'mi', 'languageName': {'simpleText': '毛利文'}},
- {'languageCode': 'jv', 'languageName': {'simpleText': '爪哇文'}},
- {'languageCode': 'eo', 'languageName': {'simpleText': '世界語'}},
- {'languageCode': 'gl', 'languageName': {'simpleText': '加里西亞文'}},
- {'languageCode': 'ca', 'languageName': {'simpleText': '加泰隆尼亞文'}},
- {'languageCode': 'gu', 'languageName': {'simpleText': '古吉拉特文'}},
- {'languageCode': 'sw', 'languageName': {'simpleText': '史瓦希里文'}},
- {'languageCode': 'ne', 'languageName': {'simpleText': '尼泊爾文'}},
- {'languageCode': 'ny', 'languageName': {'simpleText': '尼揚賈文'}},
- {'languageCode': 'be', 'languageName': {'simpleText': '白俄羅斯文'}},
- {'languageCode': 'lt', 'languageName': {'simpleText': '立陶宛文'}},
- {'languageCode': 'ig', 'languageName': {'simpleText': '伊布文'}},
- {'languageCode': 'is', 'languageName': {'simpleText': '冰島文'}},
- {'languageCode': 'hu', 'languageName': {'simpleText': '匈牙利文'}},
- {'languageCode': 'id', 'languageName': {'simpleText': '印尼文'}},
- {'languageCode': 'hi', 'languageName': {'simpleText': '印地文'}},
- {'languageCode': 'ky', 'languageName': {'simpleText': '吉爾吉斯文'}},
- {'languageCode': 'lo', 'languageName': {'simpleText': '老撾文'}},
- {'languageCode': 'fy', 'languageName': {'simpleText': '西弗里西亞文'}},
- {'languageCode': 'es', 'languageName': {'simpleText': '西班牙文'}},
- {'languageCode': 'hr', 'languageName': {'simpleText': '克羅地亞文'}},
- {'languageCode': 'kn', 'languageName': {'simpleText': '坎納達文'}},
- {'languageCode': 'iw', 'languageName': {'simpleText': '希伯來文'}},
- {'languageCode': 'el', 'languageName': {'simpleText': '希臘文'}},
- {'languageCode': 'hy', 'languageName': {'simpleText': '亞美尼亞文'}},
- {'languageCode': 'bn', 'languageName': {'simpleText': '孟加拉文'}},
- {'languageCode': 'la', 'languageName': {'simpleText': '拉丁文'}},
- {'languageCode': 'lv', 'languageName': {'simpleText': '拉脫維亞文'}},
- {'languageCode': 'fr', 'languageName': {'simpleText': '法文'}},
- {'languageCode': 'fa', 'languageName': {'simpleText': '波斯文'}},
- {'languageCode': 'bs', 'languageName': {'simpleText': '波斯尼亞文'}},
- {'languageCode': 'pl', 'languageName': {'simpleText': '波蘭文'}},
- {'languageCode': 'fi', 'languageName': {'simpleText': '芬蘭文'}},
- {'languageCode': 'am', 'languageName': {'simpleText': '阿姆哈拉文'}},
- {'languageCode': 'ar', 'languageName': {'simpleText': '阿拉伯文'}},
- {'languageCode': 'az', 'languageName': {'simpleText': '阿塞拜疆文'}},
- {'languageCode': 'sq', 'languageName': {'simpleText': '阿爾巴尼亞文'}},
- {'languageCode': 'ru', 'languageName': {'simpleText': '俄文'}},
- {'languageCode': 'bg', 'languageName': {'simpleText': '保加利亞文'}},
- {'languageCode': 'sd', 'languageName': {'simpleText': '信德文'}},
- {'languageCode': 'af', 'languageName': {'simpleText': '南非荷蘭文'}},
- {'languageCode': 'kk', 'languageName': {'simpleText': '哈薩克文'}},
- {'languageCode': 'cy', 'languageName': {'simpleText': '威爾斯文'}},
- {'languageCode': 'co', 'languageName': {'simpleText': '科西嘉文'}},
- {'languageCode': 'xh', 'languageName': {'simpleText': '科薩文'}},
- {'languageCode': 'yo', 'languageName': {'simpleText': '約魯巴文'}},
- {'languageCode': 'hmn', 'languageName': {'simpleText': '苗語'}},
- {'languageCode': 'en', 'languageName': {'simpleText': '英文'}},
- {'languageCode': 'sn', 'languageName': {'simpleText': '修納文'}},
- {'languageCode': 'haw', 'languageName': {'simpleText': '夏威夷文'}},
- {'languageCode': 'ku', 'languageName': {'simpleText': '庫德文'}},
- {'languageCode': 'no', 'languageName': {'simpleText': '挪威文'}},
- {'languageCode': 'pa', 'languageName': {'simpleText': '旁遮普文'}},
- {'languageCode': 'ka', 'languageName': {'simpleText': '格魯吉亞文'}},
- {'languageCode': 'th', 'languageName': {'simpleText': '泰文'}},
- {'languageCode': 'ta', 'languageName': {'simpleText': '泰米爾文'}},
- {'languageCode': 'te', 'languageName': {'simpleText': '泰盧固文'}},
- {'languageCode': 'ht', 'languageName': {'simpleText': '海地文'}},
- {'languageCode': 'uk', 'languageName': {'simpleText': '烏克蘭文'}},
- {'languageCode': 'uz', 'languageName': {'simpleText': '烏茲別克文'}},
- {'languageCode': 'ur', 'languageName': {'simpleText': '烏爾都文'}},
- {'languageCode': 'zu', 'languageName': {'simpleText': '祖魯文'}},
- {'languageCode': 'so', 'languageName': {'simpleText': '索馬里文'}},
- {'languageCode': 'mt', 'languageName': {'simpleText': '馬耳他文'}},
- {'languageCode': 'ms', 'languageName': {'simpleText': '馬來文'}},
- {'languageCode': 'mk', 'languageName': {'simpleText': '馬其頓文'}},
- {'languageCode': 'mg', 'languageName': {'simpleText': '馬拉加斯文'}},
- {'languageCode': 'mr', 'languageName': {'simpleText': '馬拉地文'}},
- {'languageCode': 'ml', 'languageName': {'simpleText': '馬拉雅拉姆文'}},
- {'languageCode': 'km', 'languageName': {'simpleText': '高棉文'}},
- {'languageCode': 'ceb', 'languageName': {'simpleText': '宿霧文'}},
- {'languageCode': 'cs', 'languageName': {'simpleText': '捷克文'}},
- {'languageCode': 'nl', 'languageName': {'simpleText': '荷蘭文'}},
- {'languageCode': 'su', 'languageName': {'simpleText': '巽他文'}},
- {'languageCode': 'sl', 'languageName': {'simpleText': '斯洛文尼亞文'}},
- {'languageCode': 'sk', 'languageName': {'simpleText': '斯洛伐克文'}},
- {'languageCode': 'ps', 'languageName': {'simpleText': '普什圖文'}},
- {'languageCode': 'fil', 'languageName': {'simpleText': '菲律賓文'}},
- {'languageCode': 'vi', 'languageName': {'simpleText': '越南文'}},
- {'languageCode': 'tg', 'languageName': {'simpleText': '塔吉克文'}},
- {'languageCode': 'st', 'languageName': {'simpleText': '塞索托文'}},
- {'languageCode': 'sr', 'languageName': {'simpleText': '塞爾維亞文'}},
- {'languageCode': 'or', 'languageName': {'simpleText': '奧里雅文'}},
- {'languageCode': 'it', 'languageName': {'simpleText': '意大利文'}},
- {'languageCode': 'yi', 'languageName': {'simpleText': '意第緒文'}},
- {'languageCode': 'et', 'languageName': {'simpleText': '愛沙尼亞文'}},
- {'languageCode': 'ga', 'languageName': {'simpleText': '愛爾蘭文'}},
- {'languageCode': 'sv', 'languageName': {'simpleText': '瑞典文'}},
- {'languageCode': 'pt', 'languageName': {'simpleText': '葡萄牙文'}},
- {'languageCode': 'si', 'languageName': {'simpleText': '僧伽羅文'}},
- {'languageCode': 'ug', 'languageName': {'simpleText': '維吾爾文'}},
- {'languageCode': 'mn', 'languageName': {'simpleText': '蒙古文'}},
- {'languageCode': 'ha', 'languageName': {'simpleText': '豪撒文'}},
- {'languageCode': 'de', 'languageName': {'simpleText': '德文'}},
- {'languageCode': 'my', 'languageName': {'simpleText': '緬甸文'}},
- {'languageCode': 'rw', 'languageName': {'simpleText': '盧旺達文'}},
- {'languageCode': 'lb', 'languageName': {'simpleText': '盧森堡文'}},
- {'languageCode': 'ko', 'languageName': {'simpleText': '韓文'}},
- {'languageCode': 'sm', 'languageName': {'simpleText': '薩摩亞文'}},
- {'languageCode': 'ro', 'languageName': {'simpleText': '羅馬尼亞文'}},
- {'languageCode': 'gd', 'languageName': {'simpleText': '蘇格蘭蓋爾文'}},
- {'languageCode': 'tt', 'languageName': {'simpleText': '韃靼文'}}]
+[
+    {
+        "languageCode": "tr",
+        "languageName": {
+            "simpleText": "土耳其文"
+        }
+    },
+    {
+        "languageCode": "tk",
+        "languageName": {
+            "simpleText": "土庫曼文"
+        }
+    },
+    {
+        "languageCode": "zh-Hant",
+        "languageName": {
+            "simpleText": "中文（繁體字）"
+        }
+    },
+    {
+        "languageCode": "zh-Hans",
+        "languageName": {
+            "simpleText": "中文（簡體字）"
+        }
+    },
+    {
+        "languageCode": "da",
+        "languageName": {
+            "simpleText": "丹麥文"
+        }
+    },
+    {
+        "languageCode": "eu",
+        "languageName": {
+            "simpleText": "巴斯克文"
+        }
+    },
+    {
+        "languageCode": "ja",
+        "languageName": {
+            "simpleText": "日文"
+        }
+    },
+    {
+        "languageCode": "mi",
+        "languageName": {
+            "simpleText": "毛利文"
+        }
+    },
+    {
+        "languageCode": "jv",
+        "languageName": {
+            "simpleText": "爪哇文"
+        }
+    },
+    {
+        "languageCode": "eo",
+        "languageName": {
+            "simpleText": "世界語"
+        }
+    },
+    {
+        "languageCode": "gl",
+        "languageName": {
+            "simpleText": "加里西亞文"
+        }
+    },
+    {
+        "languageCode": "ca",
+        "languageName": {
+            "simpleText": "加泰隆尼亞文"
+        }
+    },
+    {
+        "languageCode": "gu",
+        "languageName": {
+            "simpleText": "古吉拉特文"
+        }
+    },
+    {
+        "languageCode": "sw",
+        "languageName": {
+            "simpleText": "史瓦希里文"
+        }
+    },
+    {
+        "languageCode": "ne",
+        "languageName": {
+            "simpleText": "尼泊爾文"
+        }
+    },
+    {
+        "languageCode": "ny",
+        "languageName": {
+            "simpleText": "尼揚賈文"
+        }
+    },
+    {
+        "languageCode": "be",
+        "languageName": {
+            "simpleText": "白俄羅斯文"
+        }
+    },
+    {
+        "languageCode": "lt",
+        "languageName": {
+            "simpleText": "立陶宛文"
+        }
+    },
+    {
+        "languageCode": "ig",
+        "languageName": {
+            "simpleText": "伊布文"
+        }
+    },
+    {
+        "languageCode": "is",
+        "languageName": {
+            "simpleText": "冰島文"
+        }
+    },
+    {
+        "languageCode": "hu",
+        "languageName": {
+            "simpleText": "匈牙利文"
+        }
+    },
+    {
+        "languageCode": "id",
+        "languageName": {
+            "simpleText": "印尼文"
+        }
+    },
+    {
+        "languageCode": "hi",
+        "languageName": {
+            "simpleText": "印地文"
+        }
+    },
+    {
+        "languageCode": "ky",
+        "languageName": {
+            "simpleText": "吉爾吉斯文"
+        }
+    },
+    {
+        "languageCode": "lo",
+        "languageName": {
+            "simpleText": "老撾文"
+        }
+    },
+    {
+        "languageCode": "fy",
+        "languageName": {
+            "simpleText": "西弗里西亞文"
+        }
+    },
+    {
+        "languageCode": "es",
+        "languageName": {
+            "simpleText": "西班牙文"
+        }
+    },
+    {
+        "languageCode": "hr",
+        "languageName": {
+            "simpleText": "克羅地亞文"
+        }
+    },
+    {
+        "languageCode": "kn",
+        "languageName": {
+            "simpleText": "坎納達文"
+        }
+    },
+    {
+        "languageCode": "iw",
+        "languageName": {
+            "simpleText": "希伯來文"
+        }
+    },
+    {
+        "languageCode": "el",
+        "languageName": {
+            "simpleText": "希臘文"
+        }
+    },
+    {
+        "languageCode": "hy",
+        "languageName": {
+            "simpleText": "亞美尼亞文"
+        }
+    },
+    {
+        "languageCode": "bn",
+        "languageName": {
+            "simpleText": "孟加拉文"
+        }
+    },
+    {
+        "languageCode": "la",
+        "languageName": {
+            "simpleText": "拉丁文"
+        }
+    },
+    {
+        "languageCode": "lv",
+        "languageName": {
+            "simpleText": "拉脫維亞文"
+        }
+    },
+    {
+        "languageCode": "fr",
+        "languageName": {
+            "simpleText": "法文"
+        }
+    },
+    {
+        "languageCode": "fa",
+        "languageName": {
+            "simpleText": "波斯文"
+        }
+    },
+    {
+        "languageCode": "bs",
+        "languageName": {
+            "simpleText": "波斯尼亞文"
+        }
+    },
+    {
+        "languageCode": "pl",
+        "languageName": {
+            "simpleText": "波蘭文"
+        }
+    },
+    {
+        "languageCode": "fi",
+        "languageName": {
+            "simpleText": "芬蘭文"
+        }
+    },
+    {
+        "languageCode": "am",
+        "languageName": {
+            "simpleText": "阿姆哈拉文"
+        }
+    },
+    {
+        "languageCode": "ar",
+        "languageName": {
+            "simpleText": "阿拉伯文"
+        }
+    },
+    {
+        "languageCode": "az",
+        "languageName": {
+            "simpleText": "阿塞拜疆文"
+        }
+    },
+    {
+        "languageCode": "sq",
+        "languageName": {
+            "simpleText": "阿爾巴尼亞文"
+        }
+    },
+    {
+        "languageCode": "ru",
+        "languageName": {
+            "simpleText": "俄文"
+        }
+    },
+    {
+        "languageCode": "bg",
+        "languageName": {
+            "simpleText": "保加利亞文"
+        }
+    },
+    {
+        "languageCode": "sd",
+        "languageName": {
+            "simpleText": "信德文"
+        }
+    },
+    {
+        "languageCode": "af",
+        "languageName": {
+            "simpleText": "南非荷蘭文"
+        }
+    },
+    {
+        "languageCode": "kk",
+        "languageName": {
+            "simpleText": "哈薩克文"
+        }
+    },
+    {
+        "languageCode": "cy",
+        "languageName": {
+            "simpleText": "威爾斯文"
+        }
+    },
+    {
+        "languageCode": "co",
+        "languageName": {
+            "simpleText": "科西嘉文"
+        }
+    },
+    {
+        "languageCode": "xh",
+        "languageName": {
+            "simpleText": "科薩文"
+        }
+    },
+    {
+        "languageCode": "yo",
+        "languageName": {
+            "simpleText": "約魯巴文"
+        }
+    },
+    {
+        "languageCode": "hmn",
+        "languageName": {
+            "simpleText": "苗語"
+        }
+    },
+    {
+        "languageCode": "en",
+        "languageName": {
+            "simpleText": "英文"
+        }
+    },
+    {
+        "languageCode": "sn",
+        "languageName": {
+            "simpleText": "修納文"
+        }
+    },
+    {
+        "languageCode": "haw",
+        "languageName": {
+            "simpleText": "夏威夷文"
+        }
+    },
+    {
+        "languageCode": "ku",
+        "languageName": {
+            "simpleText": "庫德文"
+        }
+    },
+    {
+        "languageCode": "no",
+        "languageName": {
+            "simpleText": "挪威文"
+        }
+    },
+    {
+        "languageCode": "pa",
+        "languageName": {
+            "simpleText": "旁遮普文"
+        }
+    },
+    {
+        "languageCode": "ka",
+        "languageName": {
+            "simpleText": "格魯吉亞文"
+        }
+    },
+    {
+        "languageCode": "th",
+        "languageName": {
+            "simpleText": "泰文"
+        }
+    },
+    {
+        "languageCode": "ta",
+        "languageName": {
+            "simpleText": "泰米爾文"
+        }
+    },
+    {
+        "languageCode": "te",
+        "languageName": {
+            "simpleText": "泰盧固文"
+        }
+    },
+    {
+        "languageCode": "ht",
+        "languageName": {
+            "simpleText": "海地文"
+        }
+    },
+    {
+        "languageCode": "uk",
+        "languageName": {
+            "simpleText": "烏克蘭文"
+        }
+    },
+    {
+        "languageCode": "uz",
+        "languageName": {
+            "simpleText": "烏茲別克文"
+        }
+    },
+    {
+        "languageCode": "ur",
+        "languageName": {
+            "simpleText": "烏爾都文"
+        }
+    },
+    {
+        "languageCode": "zu",
+        "languageName": {
+            "simpleText": "祖魯文"
+        }
+    },
+    {
+        "languageCode": "so",
+        "languageName": {
+            "simpleText": "索馬里文"
+        }
+    },
+    {
+        "languageCode": "mt",
+        "languageName": {
+            "simpleText": "馬耳他文"
+        }
+    },
+    {
+        "languageCode": "ms",
+        "languageName": {
+            "simpleText": "馬來文"
+        }
+    },
+    {
+        "languageCode": "mk",
+        "languageName": {
+            "simpleText": "馬其頓文"
+        }
+    },
+    {
+        "languageCode": "mg",
+        "languageName": {
+            "simpleText": "馬拉加斯文"
+        }
+    },
+    {
+        "languageCode": "mr",
+        "languageName": {
+            "simpleText": "馬拉地文"
+        }
+    },
+    {
+        "languageCode": "ml",
+        "languageName": {
+            "simpleText": "馬拉雅拉姆文"
+        }
+    },
+    {
+        "languageCode": "km",
+        "languageName": {
+            "simpleText": "高棉文"
+        }
+    },
+    {
+        "languageCode": "ceb",
+        "languageName": {
+            "simpleText": "宿霧文"
+        }
+    },
+    {
+        "languageCode": "cs",
+        "languageName": {
+            "simpleText": "捷克文"
+        }
+    },
+    {
+        "languageCode": "nl",
+        "languageName": {
+            "simpleText": "荷蘭文"
+        }
+    },
+    {
+        "languageCode": "su",
+        "languageName": {
+            "simpleText": "巽他文"
+        }
+    },
+    {
+        "languageCode": "sl",
+        "languageName": {
+            "simpleText": "斯洛文尼亞文"
+        }
+    },
+    {
+        "languageCode": "sk",
+        "languageName": {
+            "simpleText": "斯洛伐克文"
+        }
+    },
+    {
+        "languageCode": "ps",
+        "languageName": {
+            "simpleText": "普什圖文"
+        }
+    },
+    {
+        "languageCode": "fil",
+        "languageName": {
+            "simpleText": "菲律賓文"
+        }
+    },
+    {
+        "languageCode": "vi",
+        "languageName": {
+            "simpleText": "越南文"
+        }
+    },
+    {
+        "languageCode": "tg",
+        "languageName": {
+            "simpleText": "塔吉克文"
+        }
+    },
+    {
+        "languageCode": "st",
+        "languageName": {
+            "simpleText": "塞索托文"
+        }
+    },
+    {
+        "languageCode": "sr",
+        "languageName": {
+            "simpleText": "塞爾維亞文"
+        }
+    },
+    {
+        "languageCode": "or",
+        "languageName": {
+            "simpleText": "奧里雅文"
+        }
+    },
+    {
+        "languageCode": "it",
+        "languageName": {
+            "simpleText": "意大利文"
+        }
+    },
+    {
+        "languageCode": "yi",
+        "languageName": {
+            "simpleText": "意第緒文"
+        }
+    },
+    {
+        "languageCode": "et",
+        "languageName": {
+            "simpleText": "愛沙尼亞文"
+        }
+    },
+    {
+        "languageCode": "ga",
+        "languageName": {
+            "simpleText": "愛爾蘭文"
+        }
+    },
+    {
+        "languageCode": "sv",
+        "languageName": {
+            "simpleText": "瑞典文"
+        }
+    },
+    {
+        "languageCode": "pt",
+        "languageName": {
+            "simpleText": "葡萄牙文"
+        }
+    },
+    {
+        "languageCode": "si",
+        "languageName": {
+            "simpleText": "僧伽羅文"
+        }
+    },
+    {
+        "languageCode": "ug",
+        "languageName": {
+            "simpleText": "維吾爾文"
+        }
+    },
+    {
+        "languageCode": "mn",
+        "languageName": {
+            "simpleText": "蒙古文"
+        }
+    },
+    {
+        "languageCode": "ha",
+        "languageName": {
+            "simpleText": "豪撒文"
+        }
+    },
+    {
+        "languageCode": "de",
+        "languageName": {
+            "simpleText": "德文"
+        }
+    },
+    {
+        "languageCode": "my",
+        "languageName": {
+            "simpleText": "緬甸文"
+        }
+    },
+    {
+        "languageCode": "rw",
+        "languageName": {
+            "simpleText": "盧旺達文"
+        }
+    },
+    {
+        "languageCode": "lb",
+        "languageName": {
+            "simpleText": "盧森堡文"
+        }
+    },
+    {
+        "languageCode": "ko",
+        "languageName": {
+            "simpleText": "韓文"
+        }
+    },
+    {
+        "languageCode": "sm",
+        "languageName": {
+            "simpleText": "薩摩亞文"
+        }
+    },
+    {
+        "languageCode": "ro",
+        "languageName": {
+            "simpleText": "羅馬尼亞文"
+        }
+    },
+    {
+        "languageCode": "gd",
+        "languageName": {
+            "simpleText": "蘇格蘭蓋爾文"
+        }
+    },
+    {
+        "languageCode": "tt",
+        "languageName": {
+            "simpleText": "韃靼文"
+        }
+    }
+]
