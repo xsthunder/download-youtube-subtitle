@@ -5,10 +5,11 @@
 # file to edit: ./nb/common.ipynb
 
 import os
-print("os.getenv('TRAVIS')", os.getenv('TRAVIS'))
-exit(1)
-IN_TRAVIS=(os.getenv('TRAVIS', False) == 'TRUE')
 
+IN_TRAVIS=(os.getenv('TRAVIS', False) == 'true')
+
+print("os.getenv('TRAVIS')", os.getenv('TRAVIS'), IN_TRAVIS)
+exit(1)
 #https://stackoverflow.com/questions/15411967/how-can-i-check-if-code-is-executed-in-the-ipython-notebook
 def isnotebook():
     try:
