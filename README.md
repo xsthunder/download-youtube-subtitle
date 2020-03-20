@@ -81,7 +81,7 @@ FLAGS
         bool, default to False, export caption to json
     --caption_num=CAPTION_NUM
         number, default to 0, choose the caption
-	--remove_font_tag=REMOVE_FONT_TAG
+    --remove_font_tag=REMOVE_FONT_TAG
         bool, default to True, remove font tag in transcript
 ```
 
