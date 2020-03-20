@@ -54,22 +54,22 @@ this thing now.
 
 ### run in cli
 
-```bash
-SYNOPSIS
-    dl-youtube-cc VIDEOID <flags>
+`dl-youtube-cc -h` will show the following.
 
+```bash
 DESCRIPTION
     Examples:
+    dl-youtube-cc -h # to see this helpful infomation
     dl-youtube-cc 5tKOV0KqPlg --save_to_file=False # print stuff in console
     dl-youtube-cc 5tKOV0KqPlg --output_file='test.txt' # print stuff in named file
     dl-youtube-cc 5tKOV0KqPlg --to_json=True # print stuff in json
     dl-youtube-cc 5tKOV0KqPlg --translation 'ja' # use japanese translation, see ./lang_code for full list
     dl-youtube-cc 5tKOV0KqPlg --translation False # without translation
+    dl-youtube-cc 5tKOV0KqPlg --caption_num=1 # choose the caption num
 
 POSITIONAL ARGUMENTS
     VIDEOID
         string, the id of youtube video, the string after 'v=' in a youtube video link
-
 FLAGS
     --output_file=OUTPUT_FILE
         string, default to vidio title
@@ -79,6 +79,8 @@ FLAGS
         bool or string, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
     --to_json=TO_JSON
         bool, default to False, export caption to json
+    --caption_num=CAPTION_NUM
+        number, default to 0, choose the caption
 ```
 
 ### Use in Code
