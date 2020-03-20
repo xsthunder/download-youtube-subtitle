@@ -22,14 +22,17 @@ import socket
 socket.setdefaulttimeout(5.)
 
 # dealing with xml.dom
+import re
 def getVal(dom, key):
     att = dom.attributes[key]
     return att.value
 
-def eachTxt(txt):
+def eachTxt(txt, remove_font_tag):
     start = getVal(txt, 'start')
     dur = getVal(txt, 'dur')
     txt = html.unescape((txt.firstChild.data))
+    if remove_font_tag:
+        txt =   re.sub(r'</?font[^>]*>','', txt)
     return {
         "start":start,
         "dur": dur,
@@ -69,7 +72,7 @@ from functools import partial
 import sys
 from xml.dom.minidom import parseString
 import html
-def parseTranscript(transcript):
+def parseTranscript(transcript, remove_font_tag=True):
     try:
         dom = parseString(transcript.text)
     except :
@@ -78,7 +81,8 @@ def parseTranscript(transcript):
         perr(transcript.text)
         exit(1)
     texts = dom.getElementsByTagName('text')
-    texts = list(map( eachTxt, texts,))
+    _eachTxt = partial(eachTxt, remove_font_tag=remove_font_tag)
+    texts = list(map( _eachTxt, texts,))
     return texts
 
 def each_sent(o, file=sys.stdout):
@@ -124,7 +128,7 @@ def merge_subtitle(subtitle, subtitle_cn):
         subtitle[slow_p]['translate_text'] = sub['text']
     return subtitle
 
-videoID='HSz7Q4YnQ_M'
+videoID='tktbVrTFUkc'
 data_link=f"https://youtube.com/get_video_info?video_id={videoID}"
 data=get_data(data_link)
 captionTracks, title = get_tracks_title(data)
@@ -169,7 +173,7 @@ import sys
 from functools import partial
 import json
 import re
-def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to_json=False, caption_num=0):
+def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to_json=False, caption_num=0, remove_font_tag=True):
     """
     download youtube closed caption(subtitles) by videoID
 
@@ -189,6 +193,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
     translation: bool or string, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
     to_json: bool, default to False, export caption to json
     caption_num: number, default to 0, choose the caption
+    remove_font_tag: bool, default to True, remove font tag in transcript
 
     """
 
@@ -210,12 +215,15 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
 
     baseUrl = caption['baseUrl']
     transcript = requests.get(baseUrl)
-    subtitle = parseTranscript(transcript)
+
+    _parseTranscript = partial(parseTranscript, remove_font_tag=remove_font_tag)
+
+    subtitle = _parseTranscript(transcript, )
 
     if translation:
         baseUrl = caption['baseUrl'] + '&tlang=' + translation
         transcript = requests.get(baseUrl)
-        subtitle_cn = parseTranscript(transcript)
+        subtitle_cn = _parseTranscript(transcript)
         subtitle = merge_subtitle(subtitle, subtitle_cn)
 
     f = sys.stdout
@@ -257,3 +265,14 @@ main('https://www.youtube.com/watch?v=EozTm6ZVf1U', caption_num=1)
 main('MhCEdIqFCck') # fix title with quotes "
 
 main('HSz7Q4YnQ_M') # fix when cc's length and translated cc's don't match
+
+def read_all_content(f):
+    with open(f, 'r', encoding='UTF-8') as f:
+        ret = ''.join(f.readlines())
+    return ret
+
+f = 'no_font_tag.txt'
+main('tktbVrTFUkc', output_file=f) # remove font tag
+assert '<font' not in read_all_content(f)
+assert '</font>' not in read_all_content(f)
+del f
