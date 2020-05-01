@@ -30,9 +30,13 @@ def getVal(dom, key):
 def eachTxt(txt, remove_font_tag):
     start = getVal(txt, 'start')
     dur = getVal(txt, 'dur')
-    txt = html.unescape((txt.firstChild.data))
-    if remove_font_tag:
-        txt =   re.sub(r'</?font[^>]*>','', txt)
+    if txt.firstChild is None:
+        # fix dl-youtube-cc.exe Zd14s2WW-Tc --caption_num=1
+        txt = ""
+    else :
+        txt = html.unescape((txt.firstChild.data))
+        if remove_font_tag:
+            txt =   re.sub(r'</?font[^>]*>','', txt)
     return {
         "start":start,
         "dur": dur,
@@ -81,6 +85,7 @@ def parseTranscript(transcript, remove_font_tag=True):
         perr(transcript.text)
         exit(1)
     texts = dom.getElementsByTagName('text')
+
     _eachTxt = partial(eachTxt, remove_font_tag=remove_font_tag)
     texts = list(map( _eachTxt, texts,))
     return texts
@@ -128,7 +133,7 @@ def merge_subtitle(subtitle, subtitle_cn):
         subtitle[slow_p]['translate_text'] = sub['text']
     return subtitle
 
-videoID='tktbVrTFUkc'
+videoID="Zd14s2WW-Tc"
 data_link=f"https://youtube.com/get_video_info?video_id={videoID}"
 data=get_data(data_link)
 captionTracks, title = get_tracks_title(data)
@@ -153,7 +158,6 @@ with open(output_file , 'w', encoding='UTF-8') as f:
     print("save to ", output_file)
     for sent in subtitle:
         each_sent(sent, file=f)
-
 
 def parseVideoID(videoID):
     if 'youtu' in videoID:
@@ -259,6 +263,9 @@ if __name__ == '__main__':
     else :
         set_fire(main)
 fire_main = partial(set_fire, main)
+
+#fix eachTxt, allow txt.firstChild = None
+main('https://www.youtube.com/watch?v=Zd14s2WW-Tc', caption_num=1)
 
 main('https://www.youtube.com/watch?v=EozTm6ZVf1U', caption_num=1)
 

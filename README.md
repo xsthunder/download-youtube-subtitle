@@ -46,7 +46,7 @@ this thing now.
  
 ## Install and Run
 
-### Install vai [download-youtube-subtitle · PyPI](https://pypi.org/project/download-youtube-subtitle/)
+### Install via [download-youtube-subtitle · PyPI](https://pypi.org/project/download-youtube-subtitle/)
 
 1. `pip install download-youtube-subtitle` or `pip install download-youtube-subtitle --user`
 2. `dl-youtube-cc -h`

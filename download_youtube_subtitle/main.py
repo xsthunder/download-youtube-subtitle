@@ -30,9 +30,13 @@ def getVal(dom, key):
 def eachTxt(txt, remove_font_tag):
     start = getVal(txt, 'start')
     dur = getVal(txt, 'dur')
-    txt = html.unescape((txt.firstChild.data))
-    if remove_font_tag:
-        txt =   re.sub(r'</?font[^>]*>','', txt)
+    if txt.firstChild is None:
+        # fix dl-youtube-cc.exe Zd14s2WW-Tc --caption_num=1
+        txt = ""
+    else :
+        txt = html.unescape((txt.firstChild.data))
+        if remove_font_tag:
+            txt =   re.sub(r'</?font[^>]*>','', txt)
     return {
         "start":start,
         "dur": dur,
@@ -81,6 +85,7 @@ def parseTranscript(transcript, remove_font_tag=True):
         perr(transcript.text)
         exit(1)
     texts = dom.getElementsByTagName('text')
+
     _eachTxt = partial(eachTxt, remove_font_tag=remove_font_tag)
     texts = list(map( _eachTxt, texts,))
     return texts
