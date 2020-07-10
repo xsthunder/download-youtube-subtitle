@@ -13,7 +13,13 @@ python version of [algolia/youtube-captions-scraper: Fetch youtube user submitte
  
 ### Example
 
-`dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.txt`
+`dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans`
+
+or
+
+`dl-youtube-cc https://youtube.com/get_video_info?video_id=5tKOV0KqPlg --translation zh-Hans`
+
+ will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.txt`
 
 ```text
 https://youtube.com/get_video_info?video_id=5tKOV0KqPlg
@@ -33,14 +39,33 @@ this thing now.
 
 
 ```json
-[
-    {
-        "start": "1.367",
-        "dur": "3.137",
-        "text": "All right, well, uh,\nlet's get back to real life"
-    },
-]
-// continue
+
+{
+    "original": [
+        {
+            "start": "1.367",
+            "dur": "3.137",
+            "text": "All right, well, uh,\nlet's get back to real life"
+        },
+	// continue
+	]
+	"translation": [
+	{
+		"start": "1.367",
+		"dur": "3.137",
+		"text": "好吧，恩，让我们回到现实生活中"
+	},
+		// continue
+	]
+	"merged": [
+	{
+		"start": "1.367",
+		"dur": "3.137",
+		"text": "All right, well, uh,\nlet's get back to real life",
+		"translate_text": "好吧，恩，让我们回到现实生活中"
+	},
+		// continue
+	]
 ```
 
  
@@ -51,12 +76,22 @@ this thing now.
 1. `pip install download-youtube-subtitle` or `pip install download-youtube-subtitle --user`
 2. `dl-youtube-cc -h`
 
+or uninstall to reinstall new version
+
+`pip uninstall download-youtube-subtitle -y`
 
 ### run in cli
 
 `dl-youtube-cc -h` will show the following.
 
-```bash
+```
+
+NAME
+    dl-youtube-cc - download youtube closed caption(subtitles) by videoID
+
+SYNOPSIS
+    dl-youtube-cc VIDEOID <flags>
+
 DESCRIPTION
     Examples:
     dl-youtube-cc -h # to see this helpful infomation
@@ -69,20 +104,25 @@ DESCRIPTION
 
 POSITIONAL ARGUMENTS
     VIDEOID
-        string, the id of youtube video, the string after 'v=' in a youtube video link
+        string, the video link or the id of youtube video, the string after 'v=' in a youtube video link
+
 FLAGS
     --output_file=OUTPUT_FILE
-        string, default to vidio title
+        string, default to video title
     --save_to_file=SAVE_TO_FILE
         bool, default to True, True or False
     --translation=TRANSLATION
-        bool or string, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
+        bool or string, which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
     --to_json=TO_JSON
         bool, default to False, export caption to json
     --caption_num=CAPTION_NUM
-        number, default to 0, choose the caption
+        number, default to 0, choose the caption which will be displayed as original transcript
     --remove_font_tag=REMOVE_FONT_TAG
-        bool, default to True, remove font tag in transcript
+        bool, default to True, remove font tag in txt transcript, but not in json's merged
+
+NOTES
+    You can also use flags syntax for POSITIONAL ARGUMENTS
+	
 ```
 
 ### Use in Code

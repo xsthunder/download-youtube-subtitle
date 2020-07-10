@@ -121,16 +121,69 @@ def get_valid_filename(s):
 import copy
 def merge_subtitle(subtitle, subtitle_cn):
     """
+    merge subtitle_cn(traslation) to subtitle(origin).
     cc and translated cc aren't always align,
     I found at least in cn and ja, translated cc are less than cc
     see  videoID='HSz7Q4YnQ_M'
+    cc and translated cc aren't always equal in time see 5tKOV0KqPlg for translation ja
     """
-    subtitle = copy.deepcopy(subtitle)
-    slow_p = 0
-    for sub in subtitle_cn:
-        while sub['start'] != subtitle[slow_p]['start']:
-            slow_p += 1
-        subtitle[slow_p]['translate_text'] = sub['text']
+    subtitle = copy.deepcopy(subtitle) # original transcript
+    subtitle_cn = copy.deepcopy(subtitle_cn) # translation script
+
+    TRANSLATE_TEXT="translate_text"
+    TEXT="text"
+    START="start"
+
+    # NOTE not sure how to merge them properly
+
+    # indexer for subtitle
+    sub_p = 0
+    sub_p_cn = 0
+
+    while sub_p < len(subtitle) and sub_p_cn < len(subtitle_cn):
+
+        sub = subtitle[sub_p]
+        sub_cn = subtitle_cn[sub_p_cn]
+
+        if TRANSLATE_TEXT not in sub: sub[TRANSLATE_TEXT] = ""
+
+        if float(sub[START]) >= float(sub_cn[START]) :
+        # sub goes first, being chased by sub_cn
+
+            # for separating the sentence
+            if len(sub[TRANSLATE_TEXT]) != 0: sub[TRANSLATE_TEXT] += "\n"
+
+            sub[TRANSLATE_TEXT] +=  sub_cn[TEXT]
+
+            sub_p_cn += 1
+
+        else :
+            sub_p += 1
+
+    # add empty field for subitle
+    while sub_p < len(subtitle):
+        assert sub_p_cn == len(subtitle_cn)
+
+        sub = subtitle[sub_p]
+        if TRANSLATE_TEXT not in sub: sub[TRANSLATE_TEXT] = ""
+        sub_p += 1
+
+    # add the rest of subtitle_cn to the last one of subtitle
+    while sub_p_cn < len(subtitle_cn):
+        assert sub_p == len(subtitle)
+
+        sub = subtitle[-1]
+
+        if TRANSLATE_TEXT not in sub: sub[TRANSLATE_TEXT] = ""
+
+        if len(sub[TRANSLATE_TEXT]) != 0: sub[TRANSLATE_TEXT] += "\n"
+
+        sub[TRANSLATE_TEXT] += sub_cn[TEXT]
+        sub_p_cn += 1
+
+    assert sub_p == len(subtitle)
+    assert sub_p_cn == len(subtitle_cn)
+
     return subtitle
 
 def format_caption(caption):
@@ -166,13 +219,13 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
     dl-youtube-cc 5tKOV0KqPlg --caption_num=1 # choose the caption num
 
     Argument:
-    videoID: string, the id of youtube video, the string after 'v=' in a youtube video link
+    videoID: string, the video link or the id of youtube video, the string after 'v=' in a youtube video link
     output_file: string, default to video title
     save_to_file: bool, default to True, True or False
-    translation: bool or string, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
+    translation: bool or string, which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
     to_json: bool, default to False, export caption to json
-    caption_num: number, default to 0, choose the caption
-    remove_font_tag: bool, default to True, remove font tag in transcript
+    caption_num: number, default to 0, choose the caption which will be displayed as original transcript
+    remove_font_tag: bool, default to True, remove font tag in txt transcript, but not in json's merged
 
     """
 
@@ -182,12 +235,14 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
 
     info = partial(print, "INFO: ")
 
-    info("Available caption(s)(✔ marks chosen one, given by --caption_num in 0-index, default to 0):")
+    info("available caption(s) will be displayed as original text:")
 
     for i, caption in enumerate(captionTracks):
         mark = '✔' if caption_num == i else '⭕'
         notice = f"{mark}"
         info(notice, f"#{i}.", format_caption(caption))
+
+    info("✔ marks chosen one,  given by --caption_num in 0-index, default to 0")
 
     caption = captionTracks[caption_num]
 #     info('using',f"{caption_num}.", format_caption(caption))
@@ -199,11 +254,21 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
 
     subtitle = _parseTranscript(transcript, )
 
+    output_json = { "original": subtitle }
+
     if translation:
         baseUrl = caption['baseUrl'] + '&tlang=' + translation
         transcript = requests.get(baseUrl)
         subtitle_cn = _parseTranscript(transcript)
-        subtitle = merge_subtitle(subtitle, subtitle_cn)
+        merged_subtitle = merge_subtitle(subtitle, subtitle_cn)
+        output_json = {
+                 "original": subtitle,
+                 "translation":subtitle_cn,
+                # note that it's not guaranteed to be aligned.
+                "merged": merged_subtitle,
+            }
+
+    ######################## save to file
 
     f = sys.stdout
     if save_to_file :
@@ -216,12 +281,14 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
         info("Save to ", output_file )
 
     if to_json:
-        json.dump(subtitle, f, indent=4, ensure_ascii=False)
+        json.dump(
+            output_json
+             , f, indent=4, ensure_ascii=False)
         return
 
     pfile = partial(print, file=f)
     pfile(video_link, file=f)
-    for sent in subtitle:
+    for sent in merged_subtitle:
         each_sent(sent, file=f)
         pfile()
 
