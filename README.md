@@ -17,7 +17,7 @@ python version of [algolia/youtube-captions-scraper: Fetch youtube user submitte
 
 or
 
-`dl-youtube-cc https://youtube.com/get_video_info?video_id=5tKOV0KqPlg --translation zh-Hans`
+`dl-youtube-cc https://www.youtube.com/watch?v=5tKOV0KqPlg --translation zh-Hans`
 
  will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.txt`
 
