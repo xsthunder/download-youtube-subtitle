@@ -167,7 +167,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
 
     Argument:
     videoID: string, the id of youtube video, the string after 'v=' in a youtube video link
-    output_file: string, default to vidio title
+    output_file: string, default to video title
     save_to_file: bool, default to True, True or False
     translation: bool or string, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
     to_json: bool, default to False, export caption to json
