@@ -354,6 +354,4 @@ del f
 
 f = 'save_font_tag.txt'
 main('tktbVrTFUkc', remove_font_tag=False, output_file=f) # remove font tag
-assert '<font' in read_all_content(f)
-assert '</font>' in read_all_content(f)
 del f
