@@ -35,7 +35,7 @@ this thing now.
 // continue
 ```
 
-`dl-youtube-cc 5tKOV0KqPlg --translation False --to_json=True` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.json`
+`dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans --to_json=True` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.json`
 
 
 ```json
