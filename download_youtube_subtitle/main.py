@@ -288,7 +288,8 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
 
     pfile = partial(print, file=f)
     pfile(video_link, file=f)
-    for sent in merged_subtitle:
+    sent_subtitle = merged_subtitle if merged_subtitle else subtitle
+    for sent in sent_subtitle:
         each_sent(sent, file=f)
         pfile()
 
