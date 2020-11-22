@@ -253,6 +253,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
     _parseTranscript = partial(parseTranscript, remove_font_tag=remove_font_tag)
 
     subtitle = _parseTranscript(transcript, )
+    sent_subtitle = subtitle
 
     output_json = { "original": subtitle }
 
@@ -261,6 +262,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
         transcript = requests.get(baseUrl)
         subtitle_cn = _parseTranscript(transcript)
         merged_subtitle = merge_subtitle(subtitle, subtitle_cn)
+        sent_subtitle = merged_subtitle
         output_json = {
                  "original": subtitle,
                  "translation":subtitle_cn,
@@ -288,7 +290,6 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
 
     pfile = partial(print, file=f)
     pfile(video_link, file=f)
-    sent_subtitle = merged_subtitle if merged_subtitle else subtitle
     for sent in sent_subtitle:
         each_sent(sent, file=f)
         pfile()
