@@ -5,7 +5,7 @@ Download youtube subtitles(closed caption, cc) or srt as txt or json.
 ### Features
 
 1. Support exportting translation at the same time which is useful for language study.
-3. Support proxy for youtube, follow the step at [Using Anaconda behind a company proxy — Anaconda documentation](https://docs.anaconda.com/anaconda/user-guide/tasks/proxy/).
+3. Support proxy for youtube, follow the step at [Using Anaconda behind a company proxy by setting environment-variables](https://docs.anaconda.com/anaconda/user-guide/tasks/proxy/#environment-variables).
 4. Full test with traivis [![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle.svg?branch=master)](https://travis-ci.com/xsthunder/download-youtube-subtitle) to make sure things are on rail.
 
 python version of [algolia/youtube-captions-scraper: Fetch youtube user submitted or fallback to auto-generated captions](https://github.com/algolia/youtube-captions-scraper)
@@ -35,7 +35,7 @@ this thing now.
 // continue
 ```
 
-`dl-youtube-cc 5tKOV0KqPlg --translation False --to_json=True` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.json`
+`dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans --to_json=True` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.json`
 
 
 ```json

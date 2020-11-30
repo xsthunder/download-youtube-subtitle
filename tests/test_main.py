@@ -279,6 +279,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
     _parseTranscript = partial(parseTranscript, remove_font_tag=remove_font_tag)
 
     subtitle = _parseTranscript(transcript, )
+    sent_subtitle = subtitle
 
     output_json = { "original": subtitle }
 
@@ -287,6 +288,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
         transcript = requests.get(baseUrl)
         subtitle_cn = _parseTranscript(transcript)
         merged_subtitle = merge_subtitle(subtitle, subtitle_cn)
+        sent_subtitle = merged_subtitle
         output_json = {
                  "original": subtitle,
                  "translation":subtitle_cn,
@@ -314,7 +316,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
 
     pfile = partial(print, file=f)
     pfile(video_link, file=f)
-    for sent in merged_subtitle:
+    for sent in sent_subtitle:
         each_sent(sent, file=f)
         pfile()
 
@@ -355,3 +357,6 @@ del f
 f = 'save_font_tag.txt'
 main('tktbVrTFUkc', remove_font_tag=False, output_file=f) # remove font tag
 del f
+
+# see [Fix issue where translation is not True by marosoft · Pull Request #3 · xsthunder/download-youtube-subtitle](https://github.com/xsthunder/download-youtube-subtitle/pull/3)
+main("SVdQ-2njL6U", translation=False, output_file=f'a.txt')
