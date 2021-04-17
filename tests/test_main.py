@@ -233,31 +233,40 @@ import sys
 from functools import partial
 import json
 import re
-def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to_json=False, caption_num=0, remove_font_tag=True, caption_num_second=None):
+from typing import Union, Optional
+def main(
+    videoID:str,
+    translation:Union[str,bool]='zh-Hans',
+    caption_num:int=0,
+    caption_num_second:int=None,
+    output_file:str=None,
+    save_to_file:bool=True,
+    to_json:bool=False,
+    remove_font_tag:bool=True,
+    ):
     """
     download youtube closed caption(subtitles) by videoID
 
     Examples:
     dl-youtube-cc -h # to see this helpful infomation
     dl-youtube-cc wgNiGj1nGYE --translation 'ja' # use japanese translation, see ./lang_code for full list
-    dl-youtube-cc wgNiGj1nGYE --caption_num=1 # choose the caption num for original transcript
-    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --caption_num_second=2 # manually choose the original and translation transcript
+    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --translation 'ja' # choose the caption num for original transcript and use japanese translation,
+    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --caption_num_second=2 # manually choose the original and translation transcript from available caption list
     dl-youtube-cc wgNiGj1nGYE --translation False # without translation
     dl-youtube-cc wgNiGj1nGYE --save_to_file=False # print stuff in console
     dl-youtube-cc wgNiGj1nGYE --output_file='test.txt' # print stuff in named file
     dl-youtube-cc wgNiGj1nGYE --to_json=True # print stuff in json
 
     Argument:
-    videoID: string, the video link or the id of youtube video, the string after 'v=' in a youtube video link
-    caption_num: number, default to 0, choose the caption which will be displayed as original transcript
-    caption_num_second: number, default to None, surpass translation option, choose the caption which will be displayed as translation transcript
-    translation: bool or string, which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
-    output_file: string, default to video title
-    save_to_file: bool, default to True, True or False
-    to_json: bool, default to False, export caption to json
-    remove_font_tag: bool, default to True, remove font tag in txt transcript, but not in json's merged
+    videoID : the video link or the id of youtube video, the string after 'v=' in a youtube video link
+    translation : which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, see ./lang_code.json for full list, or pass False to disable translation
+    caption_num : choose the caption which will be displayed as original transcript
+    caption_num_second : will surpass translation option, choose the caption which will be displayed as translation transcript
+    output_file : default to video title
+    save_to_file : pass False to print in console
+    to_json: pass True to export caption to json
+    remove_font_tag: remove font tag
     """
-
     videoID, video_link, data_link = parseVideoID(videoID)
     data=get_data(data_link)
     captionTracks, title = None, None
@@ -271,7 +280,6 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
     info = partial(print, "INFO: ")
 
     info("available caption(s):")
-    print(caption_num, caption_num_second)
     for i, caption in enumerate(captionTracks):
         mark = '⭕'
         if caption_num == i:mark = '✔ as original'
@@ -281,7 +289,7 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
     info("✔ marks chosen one in 0-index")
     info("given by --caption_num default to 0 as original")
     if caption_num_second is None: info("you may use --caption_num_second intead of --translation to spefify translation transript")
-    get_caption_url = lambda i:captionTracks[caption_num]["baseUrl"]
+    get_caption_url = lambda i:captionTracks[i]["baseUrl"]
 
     # as original caption
     caption = captionTracks[caption_num]
@@ -348,6 +356,10 @@ fire_main = partial(set_fire, main)
 main("wgNiGj1nGYE", translation='ja')
 
 main("wgNiGj1nGYE", caption_num=6, caption_num_second=0)
+
+main("wgNiGj1nGYE", caption_num=0, caption_num_second=3, output_file="0,3-zh,es.txt")
+
+main("wgNiGj1nGYE", caption_num=6, translation="ja", to_json=True)
 
 #fix eachTxt, allow txt.firstChild = None
 main('https://www.youtube.com/watch?v=Zd14s2WW-Tc', caption_num=1)

@@ -5,6 +5,7 @@
 # file to edit: ./nb/common.ipynb
 
 import os
+import time
 
 IN_TRAVIS=(os.getenv('TRAVIS', False) == 'true')
 
