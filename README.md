@@ -12,7 +12,7 @@
     - [Environment Setup](#environment-setup)
     - [Usage](#usage)
     - [Tests](#tests)
-      - [Ref](#ref)
+    - [Ref](#ref)
 # Download Youtube Subtitle [![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle.svg?branch=master)](https://travis-ci.com/xsthunder/download-youtube-subtitle)
 
 Download youtube subtitles(closed caption, cc) or srt as txt or json. 
