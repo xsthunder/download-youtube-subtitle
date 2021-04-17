@@ -20,7 +20,7 @@ Download youtube subtitles(closed caption, cc) or srt as txt or json.
 ### Features
 
 1. Support exportting translation at the same time which is useful for language study.
-1. All available caption will be displayed, use `--caption_num` `--caption_num_second` to choose whatever caption you want
+1. Full control. All available caption will be displayed, [use `--caption_num` `--caption_num_second` to choose the caption which will be displayed as original or translation transcript.](#use-caption_num-caption_num_second-to-get-full-control)
 1. Support proxy for youtube, follow the step at [Using Anaconda behind a company proxy by setting environment-variables](https://docs.anaconda.com/anaconda/user-guide/tasks/proxy/#environment-variables).
 1. Full test with traivis [![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle.svg?branch=master)](https://travis-ci.com/xsthunder/download-youtube-subtitle) to make sure things are on rail.
 
@@ -87,7 +87,7 @@ https://www.youtube.com/watch?v=wgNiGj1nGYE
 
 #### use caption_num caption_num_second to get full control
 
-All available caption will be displayed, use `--caption_num` `--caption_num_second` to choose whatever caption you want.
+All available caption will be displayed, use `--caption_num` `--caption_num_second` to choose the caption which will be displayed as original or translation transcript.
 
 ```bash
 >> dl-youtube-cc "wgNiGj1nGYE" --caption_num=0 --caption_num_second=3, --output_file="0,3-zh,es.txt"
