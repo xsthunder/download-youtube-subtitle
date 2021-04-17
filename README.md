@@ -217,3 +217,5 @@ cd tests
 [Packaging Python Projects — Python Packaging User Guide](http://packaging.python.org/tutorials/packaging-projects/)
 
 `./nb/notebook2script.py` from [course-v3/nbs/dl2 at master · fastai/course-v3](https://github.com/fastai/course-v3/tree/master/nbs/dl2)
+
+[Google Style Python Docstrings](https://gist.github.com/redlotus/3bc387c2591e3e908c9b63b97b11d24e#file-docstrings-py-L153)
