@@ -13,16 +13,16 @@ python version of [algolia/youtube-captions-scraper: Fetch youtube user submitte
  
 ### Example
 
-`dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans`
+`dl-youtube-cc wgNiGj1nGYE --translation zh-Hans`
 
 or
 
-`dl-youtube-cc https://www.youtube.com/watch?v=5tKOV0KqPlg --translation zh-Hans`
+`dl-youtube-cc https://www.youtube.com/watch?v=wgNiGj1nGYE --translation zh-Hans`
 
- will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.txt`
+ will saved as `Version1.5SpecialProgramGenshinImpact.txt`
 
 ```text
-https://youtube.com/get_video_info?video_id=5tKOV0KqPlg
+https://youtube.com/get_video_info?video_id=wgNiGj1nGYE
 ---------00:01----------
 All right, well, uh,
 let's get back to real life
@@ -35,7 +35,7 @@ this thing now.
 // continue
 ```
 
-`dl-youtube-cc 5tKOV0KqPlg --translation zh-Hans --to_json=True` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.json`
+`dl-youtube-cc wgNiGj1nGYE --translation zh-Hans --to_json=True` will saved as `HowSouthAfricaCouldPreparetheU.S.forPresidentTrumpTheDailyShow.json`
 
 
 ```json
@@ -95,12 +95,12 @@ SYNOPSIS
 DESCRIPTION
     Examples:
     dl-youtube-cc -h # to see this helpful infomation
-    dl-youtube-cc 5tKOV0KqPlg --save_to_file=False # print stuff in console
-    dl-youtube-cc 5tKOV0KqPlg --output_file='test.txt' # print stuff in named file
-    dl-youtube-cc 5tKOV0KqPlg --to_json=True # print stuff in json
-    dl-youtube-cc 5tKOV0KqPlg --translation 'ja' # use japanese translation, see ./lang_code for full list
-    dl-youtube-cc 5tKOV0KqPlg --translation False # without translation
-    dl-youtube-cc 5tKOV0KqPlg --caption_num=1 # choose the caption num
+    dl-youtube-cc wgNiGj1nGYE --save_to_file=False # print stuff in console
+    dl-youtube-cc wgNiGj1nGYE --output_file='test.txt' # print stuff in named file
+    dl-youtube-cc wgNiGj1nGYE --to_json=True # print stuff in json
+    dl-youtube-cc wgNiGj1nGYE --translation 'ja' # use japanese translation, see ./lang_code for full list
+    dl-youtube-cc wgNiGj1nGYE --translation False # without translation
+    dl-youtube-cc wgNiGj1nGYE --caption_num=1 # choose the caption num
 
 POSITIONAL ARGUMENTS
     VIDEOID
@@ -140,7 +140,7 @@ import download_youtube_subtitle.main as download_youtube_subtitle
 [for conda](./config/create-env.sh)
 
 ```bash
-pip install 'fire' 'requests' 'IPython'
+pip install 'fire' 'requests' 'IPython' 'sure'
 ```
 
 ### Usage

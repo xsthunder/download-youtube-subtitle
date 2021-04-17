@@ -25,7 +25,7 @@ setuptools.setup(
             "dl-youtube-cc = download_youtube_subtitle.__main__:fire_main",
         ]
     },
-    install_requires=['fire', 'requests', 'IPython'],
+    install_requires=['fire', 'requests'],
     python_requires='>=3.4',
     
 )
