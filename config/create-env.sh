@@ -4,5 +4,6 @@ then
     source $HOME/miniconda/etc/profile.d/conda.sh
 fi
 
-# py3.7 for asyncio.WindowsProactorEventLoopPolicy() support
-conda create -n test fire requests IPython sure -c conda-forge -y
+# you may create indepent env by conda create --name ...
+conda install fire requests -c conda-forge -y
+conda install sure -y
