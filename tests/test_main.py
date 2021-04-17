@@ -53,15 +53,17 @@ def get_data(link):
     data = requests.get(link)
     data = data.text
     return data
-
+class CaptionNotAvailableException(Exception):
+    pass
 import re
 import json
 import urllib
 def get_tracks_title(data):
     decodedData = urllib.parse.unquote(data)
     if 'captionTracks' not in decodedData:
-        perr("no caption available. ;(")
-        exit(1)
+        perr("no caption available for this video ;( following are message from youtube")
+        perr(re.findall('playabilityStatus.*?}', decodedData))
+        raise CaptionNotAvailableException()
     match = re.search(r'({"captionTracks":.*isTranslatable":(true|false)}])', decodedData)
     match = match.group(1)
     match = f"{match}}}"
@@ -125,7 +127,7 @@ def merge_subtitle(subtitle, subtitle_cn):
     cc and translated cc aren't always align,
     I found at least in cn and ja, translated cc are less than cc
     see  videoID='HSz7Q4YnQ_M'
-    cc and translated cc aren't always equal in time see 5tKOV0KqPlg for translation ja
+    cc and translated cc aren't always equal in time see wgNiGj1nGYE for translation ja
     """
     subtitle = copy.deepcopy(subtitle) # original transcript
     subtitle_cn = copy.deepcopy(subtitle_cn) # translation script
@@ -188,7 +190,7 @@ def merge_subtitle(subtitle, subtitle_cn):
 
 #here to break up the procss
 # videoID="Zd14s2WW-Tc"
-videoID="5tKOV0KqPlg"
+videoID="wgNiGj1nGYE"
 data_link=f"https://youtube.com/get_video_info?video_id={videoID}"
 data=get_data(data_link)
 captionTracks, title = get_tracks_title(data)
@@ -221,9 +223,9 @@ def parseVideoID(videoID):
     data_link=f"https://youtube.com/get_video_info?video_id={videoID}"
     return videoID, video_link, data_link
 
-videoID = 'https://www.youtube.com/watch?v=5tKOV0KqPlg'
+videoID = 'https://www.youtube.com/watch?v=wgNiGj1nGYE'
 videoID, video_link, data_link = parseVideoID(videoID)
-videoID = '5tKOV0KqPlg'
+videoID = 'wgNiGj1nGYE'
 assert (videoID, video_link, data_link) == parseVideoID(videoID)
 
 import fire
@@ -231,60 +233,79 @@ import sys
 from functools import partial
 import json
 import re
-def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to_json=False, caption_num=0, remove_font_tag=True):
+from typing import Union, Optional
+def main(
+    videoID:str,
+    translation:Union[str,bool]='zh-Hans',
+    caption_num:int=0,
+    caption_num_second:int=None,
+    output_file:str=None,
+    save_to_file:bool=True,
+    to_json:bool=False,
+    remove_font_tag:bool=True,
+    ):
     """
     download youtube closed caption(subtitles) by videoID
 
     Examples:
     dl-youtube-cc -h # to see this helpful infomation
-    dl-youtube-cc 5tKOV0KqPlg --save_to_file=False # print stuff in console
-    dl-youtube-cc 5tKOV0KqPlg --output_file='test.txt' # print stuff in named file
-    dl-youtube-cc 5tKOV0KqPlg --to_json=True # print stuff in json
-    dl-youtube-cc 5tKOV0KqPlg --translation 'ja' # use japanese translation, see ./lang_code for full list
-    dl-youtube-cc 5tKOV0KqPlg --translation False # without translation
-    dl-youtube-cc 5tKOV0KqPlg --caption_num=1 # choose the caption num
+    dl-youtube-cc wgNiGj1nGYE --translation 'ja' # use japanese translation, see ./lang_code for full list
+    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --translation 'ja' # choose the caption num for original transcript and use japanese translation,
+    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --caption_num_second=2 # manually choose the original and translation transcript from available caption list
+    dl-youtube-cc wgNiGj1nGYE --translation False # without translation
+    dl-youtube-cc wgNiGj1nGYE --save_to_file=False # print stuff in console
+    dl-youtube-cc wgNiGj1nGYE --output_file='test.txt' # print stuff in named file
+    dl-youtube-cc wgNiGj1nGYE --to_json=True # print stuff in json
 
     Argument:
-    videoID: string, the video link or the id of youtube video, the string after 'v=' in a youtube video link
-    output_file: string, default to video title
-    save_to_file: bool, default to True, True or False
-    translation: bool or string, which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, False or lang code, see ./lang_code.json for full list
-    to_json: bool, default to False, export caption to json
-    caption_num: number, default to 0, choose the caption which will be displayed as original transcript
-    remove_font_tag: bool, default to True, remove font tag in txt transcript, but not in json's merged
-
+    videoID : the video link or the id of youtube video, the string after 'v=' in a youtube video link
+    translation : which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, see ./lang_code.json for full list, or pass False to disable translation
+    caption_num : choose the caption which will be displayed as original transcript
+    caption_num_second : will surpass translation option, choose the caption which will be displayed as translation transcript
+    output_file : default to video title
+    save_to_file : pass False to print in console
+    to_json: pass True to export caption to json
+    remove_font_tag: remove font tag
     """
-
     videoID, video_link, data_link = parseVideoID(videoID)
     data=get_data(data_link)
-    captionTracks, title = get_tracks_title(data)
+    captionTracks, title = None, None
+    try:
+        captionTracks, title = get_tracks_title(data)
+    except:
+        perr("can't not retrive caption, visit ", data_link, " for detail")
+        raise
+
 
     info = partial(print, "INFO: ")
 
-    info("available caption(s) will be displayed as original text:")
-
+    info("available caption(s):")
     for i, caption in enumerate(captionTracks):
-        mark = '✔' if caption_num == i else '⭕'
+        mark = '⭕'
+        if caption_num == i:mark = '✔ as original'
+        if caption_num_second == i: mark = '✔ as translation'
         notice = f"{mark}"
         info(notice, f"#{i}.", format_caption(caption))
+    info("✔ marks chosen one in 0-index")
+    info("given by --caption_num default to 0 as original")
+    if caption_num_second is None: info("you may use --caption_num_second intead of --translation to spefify translation transript")
+    get_caption_url = lambda i:captionTracks[i]["baseUrl"]
 
-    info("✔ marks chosen one,  given by --caption_num in 0-index, default to 0")
-
+    # as original caption
     caption = captionTracks[caption_num]
-#     info('using',f"{caption_num}.", format_caption(caption))
-
     baseUrl = caption['baseUrl']
     transcript = requests.get(baseUrl)
+#     info('using',f"{caption_num}.", format_caption(caption))
 
     _parseTranscript = partial(parseTranscript, remove_font_tag=remove_font_tag)
-
     subtitle = _parseTranscript(transcript, )
     sent_subtitle = subtitle
 
     output_json = { "original": subtitle }
 
-    if translation:
-        baseUrl = caption['baseUrl'] + '&tlang=' + translation
+    if translation or caption_num_second:
+        if translation: baseUrl = caption['baseUrl'] + '&tlang=' + translation
+        if caption_num_second: baseUrl = get_caption_url(caption_num_second)
         transcript = requests.get(baseUrl)
         subtitle_cn = _parseTranscript(transcript)
         merged_subtitle = merge_subtitle(subtitle, subtitle_cn)
@@ -320,8 +341,6 @@ def main(videoID, output_file=None, save_to_file=True, translation='zh-Hans', to
         each_sent(sent, file=f)
         pfile()
 
-
-
 from functools import partial
 def set_fire(fn):
     if common.IN_TRAVIS or common.IN_JUPYTER:
@@ -334,10 +353,19 @@ if __name__ == '__main__':
         set_fire(main)
 fire_main = partial(set_fire, main)
 
+main("wgNiGj1nGYE", translation='ja')
+
+main("wgNiGj1nGYE", caption_num=6, caption_num_second=0)
+
+main("wgNiGj1nGYE", caption_num=0, caption_num_second=3, output_file="0,3-zh,es.txt")
+
+main("wgNiGj1nGYE", caption_num=6, translation="ja", to_json=True)
+
 #fix eachTxt, allow txt.firstChild = None
 main('https://www.youtube.com/watch?v=Zd14s2WW-Tc', caption_num=1)
 
-main('https://www.youtube.com/watch?v=EozTm6ZVf1U', caption_num=1)
+import sure
+main.when.called_with('https://www.youtube.com/watch?v=EozTm6ZVf1U', caption_num=1).should.throw(CaptionNotAvailableException)
 
 main('MhCEdIqFCck') # fix title with quotes "
 
