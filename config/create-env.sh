@@ -6,4 +6,4 @@ fi
 
 # you may create indepent env by conda create --name ...
 conda install fire requests -c conda-forge -y
-conda install sure -y
+yes | pip install sure
