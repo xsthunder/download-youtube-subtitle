@@ -199,7 +199,7 @@ def parseVideoID(videoID):
         videoID = re.search('v=([^&]+)', videoID).group(1)
 
     video_link = f'https://www.youtube.com/watch?v={videoID}'
-    data_link=f"https://youtube.com/get_video_info?video_id={videoID}"
+    data_link=f"https://youtube.com/get_video_info?video_id={videoID}&html5=1"
     return videoID, video_link, data_link
 
 import fire
