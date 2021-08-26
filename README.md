@@ -1,3 +1,7 @@
+# DO NOT USE
+
+**this tool no longer works due to api changes of youtube api**
+
 - [Download Youtube Subtitle ![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle)](#download-youtube-subtitle-)
     - [Features](#features)
     - [Example](#example)
