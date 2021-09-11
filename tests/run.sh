@@ -10,8 +10,7 @@ then
 fi
 
 
+TRAVIS=TRUE
 # run test
-for file in ./*.py
-do
-	python $file
-done
+python test_main.py wgNiGj1nGYE
+bash -x test_cli.sh
