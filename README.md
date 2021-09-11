@@ -1,4 +1,6 @@
-# due to changes of youtube api, you need to UPGRADE to 2.0.0, see [Install and Run](#install-and-run)
+# download-youtube-subtitle
+
+**due to changes of youtube api, you need to UPGRADE to 2.0.0, see [Install and Run](#install-and-run)**
 
 - [Download Youtube Subtitle ![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle)](#download-youtube-subtitle-)
     - [Features](#features)
