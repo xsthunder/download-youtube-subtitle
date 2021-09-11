@@ -1,3 +1,7 @@
+# download-youtube-subtitle
+
+**due to changes of youtube api, you need to UPGRADE to 2.0.0, see [Install and Run](#install-and-run)**
+
 - [Download Youtube Subtitle ![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle)](#download-youtube-subtitle-)
     - [Features](#features)
     - [Example](#example)
@@ -12,7 +16,7 @@
     - [Environment Setup](#environment-setup)
     - [Usage](#usage)
     - [Tests](#tests)
-      - [Ref](#ref)
+    - [Ref](#ref)
 # Download Youtube Subtitle [![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle.svg?branch=master)](https://travis-ci.com/xsthunder/download-youtube-subtitle)
 
 Download youtube subtitles(closed caption, cc) or srt as txt or json. 
@@ -210,10 +214,12 @@ cd tests
 ./test_cli.sh
 ```
 
-#### Ref 
+### Ref 
 
 [deployment - How can I use setuptools to generate a console_scripts entry point which calls `python -m mypackage`? - Stack Overflow](https://stackoverflow.com/questions/27784271/how-can-i-use-setuptools-to-generate-a-console-scripts-entry-point-which-calls)
 
 [Packaging Python Projects — Python Packaging User Guide](http://packaging.python.org/tutorials/packaging-projects/)
 
 `./nb/notebook2script.py` from [course-v3/nbs/dl2 at master · fastai/course-v3](https://github.com/fastai/course-v3/tree/master/nbs/dl2)
+
+[Google Style Python Docstrings](https://gist.github.com/redlotus/3bc387c2591e3e908c9b63b97b11d24e#file-docstrings-py-L153)

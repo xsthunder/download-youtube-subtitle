@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="UTF-8") as fh:
 
 setuptools.setup(
     name="download-youtube-subtitle", # Replace with your own username
-    version="1.1.1",
+    version="2.0.0",
     author="xsthunder",
     author_email="xsthunder@outlook.com",
     description="download youtube subtitles(closed caption, cc) as txt or json",
@@ -25,8 +25,8 @@ setuptools.setup(
             "dl-youtube-cc = download_youtube_subtitle.__main__:fire_main",
         ]
     },
-    install_requires=['fire', 'requests'],
+    install_requires=['fire', 'requests', 'pytube'],
     python_requires='>=3.4',
-    
+
 )
 
