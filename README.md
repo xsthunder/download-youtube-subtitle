@@ -1,6 +1,4 @@
-# DO NOT USE
-
-**this tool no longer works due to api changes of youtube api, see [No subtitles can be downloaded. · Issue #12 · xsthunder/download-youtube-subtitle](https://github.com/xsthunder/download-youtube-subtitle/issues/12)**
+# due to changes of youtube api, you need to UPGRADE to 2.0.0, see [Install and Run](#install-and-run)
 
 - [Download Youtube Subtitle ![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle)](#download-youtube-subtitle-)
     - [Features](#features)
