@@ -1,6 +1,6 @@
 language: python
 install:
-- pip install 'fire' 'requests' 'pytube'
+- pip install 'fire' 'requests' 'pytube' 'sure'
 script:
 - cd tests
 - bash run.sh
