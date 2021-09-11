@@ -12,4 +12,4 @@ fi
 
 # run test
 python test_main.py wgNiGj1nGYE
-bash -x test_cli.sh
+
