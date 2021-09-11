@@ -1,4 +1,4 @@
-set -e
+set -ex
 
 
 # set up conda env
@@ -10,7 +10,6 @@ then
 fi
 
 
-TRAVIS=TRUE
 # run test
 python test_main.py wgNiGj1nGYE
 bash -x test_cli.sh
