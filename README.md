@@ -1,4 +1,8 @@
-try it online with google's free python runtime! https://colab.research.google.com/drive/1oseD2yEsScx0YYOZ1x1F8GSG9iJ4x3qi?usp=sharing
+try it online with google's free python runtime! protip: you are able to download the output file from the sidebar! FREE from installation on your machine!
+
+https://colab.research.google.com/drive/1oseD2yEsScx0YYOZ1x1F8GSG9iJ4x3qi?usp=sharing
+
+![图片](https://user-images.githubusercontent.com/15523788/219826982-df9af9a8-4c11-4894-ab88-5561902c0597.png)
 
 # download-youtube-subtitle
 
