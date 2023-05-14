@@ -1,3 +1,7 @@
+Updates:
+-----------------
+this script is NOT avaliable temporarily. DONT USE. I'll try to fix it ASAP, but it's not guaranteed.
+
 try it online with google's free python runtime! protip: you are able to download the output file from the sidebar! FREE from installation on your machine!
 
 https://colab.research.google.com/drive/1oseD2yEsScx0YYOZ1x1F8GSG9iJ4x3qi?usp=sharing
