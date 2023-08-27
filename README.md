@@ -206,7 +206,7 @@ import download_youtube_subtitle.main as download_youtube_subtitle
 [for conda](./config/create-env.sh)
 
 ```bash
-pip install 'fire' 'requests' 'IPython' 'sure'
+pip install 'fire' 'requests' 'IPython' 'sure' 'pytube'
 ```
 
 ### Usage
