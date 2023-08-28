@@ -35,6 +35,6 @@ jobs:
     # - name: Test
     #   run: |
     #     cd tests
-        bash run.sh
-        bash test_cli.sh
-        cd ..
+        # bash run.sh
+        # bash test_cli.sh
+        # cd ..
