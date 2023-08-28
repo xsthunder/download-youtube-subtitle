@@ -1,6 +1,20 @@
+Updates:
+-----------------
+3.0.0 fix download error and it finally supports download entire playlist! see [Download the caption of entire playlist](#download-the-caption-of-entire-playlist)
+
+
+Try it now!
+-----------------
+
+try it online with google's free python runtime! protip: you are able to download the output file from the sidebar! FREE from installation on your machine!
+
+https://colab.research.google.com/drive/1oseD2yEsScx0YYOZ1x1F8GSG9iJ4x3qi?usp=sharing
+
+![图片](https://user-images.githubusercontent.com/15523788/219826982-df9af9a8-4c11-4894-ab88-5561902c0597.png)
+
 # download-youtube-subtitle
 
-**due to changes of youtube api, you need to UPGRADE to 2.0.0, see [Install and Run](#install-and-run)**
+**Due to changes of youtube api, you need to UPGRADE to 3.0.0, see [Install and Run](#install-and-run)**
 
 - [Download Youtube Subtitle ![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle)](#download-youtube-subtitle-)
     - [Features](#features)
@@ -35,55 +49,53 @@ python version of [algolia/youtube-captions-scraper: Fetch youtube user submitte
 
 #### save as txt
 
-`dl-youtube-cc https://www.youtube.com/watch?v=wgnigj1ngye --translation ja`
+`dl-youtube-cc https://www.youtube.com/watch?v=wgNiGj1nGYE --translation 'ru'`
 or
-`dl-youtube-cc wgNiGj1nGYE --translation ja`
+`dl-youtube-cc wgNiGj1nGYE --translation 'ru'`
 
 will saved as `Version1.5SpecialProgramGenshinImpact.txt`
 
 ```text
-https://www.youtube.com/watch?v=wgNiGj1nGYE
+video_link	 https://www.youtube.com/watch?v=wgNiGj1nGYE
+original	 code="zh-Hans" name="Chinese (Simplified)"
+translation	 ru
 ---------00:00----------
-從前，有一對雙胞胎結伴在宇宙中旅行
-昔々、宇宙を一緒に旅している双子のペアがいました
+从前，有一对双胞胎结伴在宇宙中旅行
+Давным-давно, два близнеца вместе путешествовали по Вселенной.
 
 ---------00:05----------
-但有一天，他們前路遇阻
-しかしある日、彼らの道は封鎖されました
-
----------00:07----------
-被一個未知的神明生生分離
-未知の神によって隔てられている
+但有一天，他们前路遇阻
+Однажды путь им преградило неизвестное божество
 ```
 
 #### save as json
 
-`dl-youtube-cc wgNiGj1nGYE --translation ja --to_json=True` will saved as `Version1.5SpecialProgramGenshinImpact.json`
+`dl-youtube-cc wgNiGj1nGYE --translation ru --to_json=True` will saved as `Version1.5SpecialProgramGenshinImpact.json`
 
 ```json
 {
     "original": [
         {
             "start": "0",
-            "dur": "5.056",
-            "text": "Once upon a time, two twins traveled together throughout the universe."
+            "dur": "5056",
+            "text": "从前，有一对双胞胎结伴在宇宙中旅行"
         },
-	// continue
+    	// continue
 	],
     "translation": [
         {
             "start": "0",
-            "dur": "5.056",
-            "text": "昔々、2人の双子が一緒に宇宙を旅していました。"
+            "dur": "5056",
+            "text": "Давным-давно, два близнеца вместе путешествовали по Вселенной."
         },
-		// continue
+        // continue
 	],
     "merged": [
         {
             "start": "0",
-            "dur": "5.056",
-            "text": "Once upon a time, two twins traveled together throughout the universe.",
-            "translate_text": "昔々、2人の双子が一緒に宇宙を旅していました。"
+            "dur": "5056",
+            "text": "从前，有一对双胞胎结伴在宇宙中旅行",
+            "translate_text": "Давным-давно, два близнеца вместе путешествовали по Вселенной."
         },
 		// continue
 	]
@@ -94,22 +106,21 @@ https://www.youtube.com/watch?v=wgNiGj1nGYE
 All available caption will be displayed, use `--caption_num` `--caption_num_second` to choose the caption which will be displayed as original or translation transcript.
 
 ```bash
->> dl-youtube-cc "wgNiGj1nGYE" --caption_num=0 --caption_num_second=3, --output_file="0,3-zh,es.txt"
+>> dl-youtube-cc "wgNiGj1nGYE" --caption_num=0 --caption_num_second=3 --output_file="0,3-zh,fr.txt"
 INFO:  available caption(s):
-INFO:  ✔ as original #0. .zh-Hant 中文（繁體字）
-INFO:  ⭕ #1. .zh-Hans 中文（簡體字）
-INFO:  ⭕ #2. .id      印尼文
-INFO:  ✔ as translation #3. .es      西班牙文
-INFO:  ⭕ #4. .fr      法文
-INFO:  ⭕ #5. .ru      俄文
-INFO:  ⭕ #6. .en-US   英文（美國）
-INFO:  ⭕ #7. .th      泰文
-INFO:  ⭕ #8. .vi      越南文
-INFO:  ⭕ #9. .pt      葡萄牙文
-INFO:  ⭕ #10. .de      德文
-INFO:  ✔ marks chosen one in 0-index
+INFO:  #0  ✔ as original code="zh-Hans" name="Chinese (Simplified)"
+INFO:  #1  ⭕ code="zh-Hant" name="Chinese (Traditional)"
+INFO:  #2  ⭕ code="en-US" name="English (United States)"
+INFO:  #3  ✔ as translation code="fr" name="French"
+INFO:  #4  ⭕ code="de" name="German"
+INFO:  #5  ⭕ code="id" name="Indonesian"
+INFO:  #6  ⭕ code="pt" name="Portuguese"
+INFO:  #7  ⭕ code="ru" name="Russian"
+INFO:  #8  ⭕ code="es" name="Spanish"
+INFO:  #9  ⭕ code="th" name="Thai"
+INFO:  #10 ⭕ code="vi" name="Vietnamese"
 INFO:  given by --caption_num default to 0 as original
-INFO:  Save to  0,3-zh,es.txt
+INFO:  Save to  0,3-zh,fr.txt
 ```
  
 ## Install and Run
@@ -123,7 +134,9 @@ or uninstall to reinstall new version
 
 `pip uninstall download-youtube-subtitle -y`
 
-### run in cli
+### Run in CLI
+
+#### Download the caption of one video
 
 `dl-youtube-cc -h` will show the following.
 
@@ -137,8 +150,8 @@ SYNOPSIS
 DESCRIPTION
     Examples:
     dl-youtube-cc -h # to see this helpful infomation
-    dl-youtube-cc wgNiGj1nGYE --translation 'ja' # use japanese translation, see ./lang_code for full list
-    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --translation 'ja' # choose the caption num for original transcript and use japanese translation,
+    dl-youtube-cc wgNiGj1nGYE --translation 'ru' # use russian translation, see ./lang_code for full list
+    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --translation 'ru' # choose the caption num for original transcript and use russian translation,
     dl-youtube-cc wgNiGj1nGYE --caption_num=1 --caption_num_second=2 # manually choose the original and translation transcript from available caption list
     dl-youtube-cc wgNiGj1nGYE --translation False # without translation
     dl-youtube-cc wgNiGj1nGYE --save_to_file=False # print stuff in console
@@ -181,6 +194,73 @@ FLAGS
         remove font tag
 ```
 
+
+#### Download the caption of entire playlist
+
+
+`dl-youtube-cc-playlist -h` will show the following.
+
+```
+NAME
+    dl-youtube-cc-playlist - download youtube closed caption(subtitles) by playlist. To figure most of params, please use dl-youtube-cc to download one video first before downloading the entire playlist.
+
+SYNOPSIS
+    dl-youtube-cc-playlist PLAYLIST_URL <flags>
+
+DESCRIPTION
+    Examples:
+    dl-youtube-cc-playlist -h # to see this helpful infomation
+    dl-youtube-cc-playlist PLS1QulWo1RIaJECMeUT4LFwJ-ghgoSH6n
+    dl-youtube-cc-playlist PLS1QulWo1RIaJECMeUT4LFwJ-ghgoSH6n 0 3 # download the first 3 videos
+    dl-youtube-cc-playlist https://www.youtube.com/playlist?list=PLS1QulWo1RIaJECMeUT4LFwJ-ghgoSH6n
+
+POSITIONAL ARGUMENTS
+    PLAYLIST_URL
+        Type: str
+        the playlist link or the id of youtube playlist, the string after 'list=' in the url
+
+FLAGS
+    --start=START
+        Default: 0
+        the index number in the playlist to start downloading, starting from 0
+    -e, --end=END
+        Type: Optional[]
+        Default: None
+        the index number in the playlist to end downloading, exclusively
+    --translation=TRANSLATION
+        Type: Optional[typing.Union[st...
+        Default: None
+        which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, see ./lang_code.json for full list, or pass False to disable translation
+    --caption_num=CAPTION_NUM
+        Type: int
+        Default: 0
+        choose the caption which will be displayed as original transcript
+    --caption_num_second=CAPTION_NUM_SECOND
+        Type: Optional[int]
+        Default: None
+        will surpass translation option, choose the caption which will be displayed as translation transcript
+    -o, --output_file=OUTPUT_FILE
+        Type: Optional[str]
+        Default: None
+        default to video title
+    --save_to_file=SAVE_TO_FILE
+        Type: bool
+        Default: True
+        pass False to print in console
+    --to_json=TO_JSON
+        Type: bool
+        Default: False
+        pass True to export caption to json
+    -r, --remove_font_tag=REMOVE_FONT_TAG
+        Type: bool
+        Default: True
+        remove font tag
+
+NOTES
+    You can also use flags syntax for POSITIONAL ARGUMENT
+```
+
+
 ### Use in Code
 
 ```python
@@ -196,7 +276,8 @@ import download_youtube_subtitle.main as download_youtube_subtitle
 [for conda](./config/create-env.sh)
 
 ```bash
-pip install 'fire' 'requests' 'IPython' 'sure'
+pip install 'fire' 'requests' 'IPython' 'sure' 'pytube' 'progiter'
+pip install -e .
 ```
 
 ### Usage

@@ -1,8 +1,10 @@
+python ../download_youtube_subtitle/main_playlist.py --help
+python ../download_youtube_subtitle/main_playlist.py PLbpi6ZahtOH7wvHqyW5FP-afBByBW2DAS 0 2
+
 python ../main.py --help
-python ../main.py wgNiGj1nGYE --save_to_file=False
 python ../main.py wgNiGj1nGYE --output_file='test.txt'
 python ../main.py wgNiGj1nGYE --to_json=True 
-python ../main.py wgNiGj1nGYE --translation 'ja' --output_file='test.ja.txt'
+python ../main.py wgNiGj1nGYE --translation 'ru' --output_file='test.ja.txt'
 python ../main.py wgNiGj1nGYE  --to_json=True  --output_file='test.cn.json'
 python ../main.py wgNiGj1nGYE --translation False --to_json=True  --output_file='test.none.json'
 python ../main.py wgNiGj1nGYE --caption_num=0 --caption_num_second=2 --output_file="0,2.txt"

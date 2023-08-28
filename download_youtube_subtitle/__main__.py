@@ -1,1 +1,2 @@
 from download_youtube_subtitle.main import fire_main
+from download_youtube_subtitle.main_playlist import fire_main_playlist

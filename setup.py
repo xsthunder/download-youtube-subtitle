@@ -23,9 +23,10 @@ setuptools.setup(
     entry_points = {
         "console_scripts": [
             "dl-youtube-cc = download_youtube_subtitle.__main__:fire_main",
+            "dl-youtube-cc-playlist = download_youtube_subtitle.__main__:fire_main_playlist",
         ]
     },
-    install_requires=['fire', 'requests', 'pytube'],
+    install_requires=['fire', 'requests', 'pytube', 'progiter'],
     python_requires='>=3.4',
 
 )
