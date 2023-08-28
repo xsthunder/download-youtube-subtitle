@@ -1,6 +1,10 @@
 Updates:
 -----------------
-Now it supports download entire playlist!
+3.0.0 fix download error it supports download entire playlist! see [Download the caption of entire playlist](#download-the-caption-of-entire-playlist)
+
+
+Try it now!
+-----------------
 
 try it online with google's free python runtime! protip: you are able to download the output file from the sidebar! FREE from installation on your machine!
 
@@ -10,7 +14,7 @@ https://colab.research.google.com/drive/1oseD2yEsScx0YYOZ1x1F8GSG9iJ4x3qi?usp=sh
 
 # download-youtube-subtitle
 
-**due to changes of youtube api, you need to UPGRADE to 2.0.0, see [Install and Run](#install-and-run)**
+**Due to changes of youtube api, you need to UPGRADE to 3.0.0, see [Install and Run](#install-and-run)**
 
 - [Download Youtube Subtitle ![Build Status](https://travis-ci.com/xsthunder/download-youtube-subtitle)](#download-youtube-subtitle-)
     - [Features](#features)
