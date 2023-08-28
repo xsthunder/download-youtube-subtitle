@@ -205,7 +205,7 @@ import re
 from typing import Union, Optional
 def main(
     videoID:str,
-    translation:Union[str,bool]=None,
+    translation:str=None,
     caption_num:int=0,
     caption_num_second:int=None,
     output_file:str=None,
@@ -228,7 +228,7 @@ def main(
 
     Argument:
     videoID : the video link or the id of youtube video, the string after 'v=' in a youtube video link
-    translation : which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, see ./lang_code.json for full list, or pass False to disable translation
+    translation : which will be displayed as original transcript, default to None
     caption_num : choose the caption which will be displayed as original transcript
     caption_num_second : will surpass translation option, choose the caption which will be displayed as translation transcript
     output_file : default to video title
@@ -237,13 +237,8 @@ def main(
     remove_font_tag: remove font tag
     """
     videoID, video_link = parseVideoID(videoID)
-    captionTracks, title = None, None
-    # try:
-    captionTracks, title, yt = get_tracks_title(videoID)
-    # except ex:
-    #     perr("can't not retrive caption, ", " for detail")
-    #     raise
 
+    captionTracks, title, yt = get_tracks_title(videoID)
 
     info = partial(print, "INFO: ")
 
@@ -251,6 +246,7 @@ def main(
     for i, caption in enumerate(captionTracks):
         mark = '⭕'
         if caption_num == i:mark = '✔ as original'
+        if translation and translation in format_caption(caption): mark = '✔ as translation'
         if caption_num_second == i: mark = '✔ as translation'
         notice = f"#{i:<2} {mark}"
         info(notice, format_caption(caption))
