@@ -1,6 +1,6 @@
 Updates:
 -----------------
-this script is NOT avaliable temporarily. DONT USE. I'll try to fix it ASAP, but it's not guaranteed.
+Now it supports download entire playlist!
 
 try it online with google's free python runtime! protip: you are able to download the output file from the sidebar! FREE from installation on your machine!
 
