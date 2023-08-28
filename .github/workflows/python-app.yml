@@ -23,6 +23,10 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    # - name: test_sec_env
+    #   run: |
+    #     echo TEST_SEC_ENV are ${{ secrets.TEST_SEC_ENV }}
+    #     echo hello_word
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
