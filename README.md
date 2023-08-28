@@ -272,7 +272,7 @@ import download_youtube_subtitle.main as download_youtube_subtitle
 [for conda](./config/create-env.sh)
 
 ```bash
-pip install 'fire' 'requests' 'IPython' 'sure' 'progiter'
+pip install 'fire' 'requests' 'IPython' 'sure' 'pytube' 'progiter'
 pip install -e .
 ```
 
