@@ -218,8 +218,8 @@ def main(
 
     Examples:
     dl-youtube-cc -h # to see this helpful infomation
-    dl-youtube-cc wgNiGj1nGYE --translation 'ja' # use japanese translation, see ./lang_code for full list
-    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --translation 'ja' # choose the caption num for original transcript and use japanese translation,
+    dl-youtube-cc wgNiGj1nGYE --translation 'ru' # use russian translation, see ./lang_code for full list
+    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --translation 'ru' # choose the caption num for original transcript and use russian translation,
     dl-youtube-cc wgNiGj1nGYE --caption_num=1 --caption_num_second=2 # manually choose the original and translation transcript from available caption list
     dl-youtube-cc wgNiGj1nGYE --translation False # without translation
     dl-youtube-cc wgNiGj1nGYE --save_to_file=False # print stuff in console

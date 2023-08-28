@@ -240,7 +240,7 @@ import re
 from typing import Union, Optional
 def main(
     videoID:str,
-    translation:Union[str,bool]=None,
+    translation:str=None,
     caption_num:int=0,
     caption_num_second:int=None,
     output_file:str=None,
@@ -253,8 +253,8 @@ def main(
 
     Examples:
     dl-youtube-cc -h # to see this helpful infomation
-    dl-youtube-cc wgNiGj1nGYE --translation 'ja' # use japanese translation, see ./lang_code for full list
-    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --translation 'ja' # choose the caption num for original transcript and use japanese translation,
+    dl-youtube-cc wgNiGj1nGYE --translation 'ru' # use russian translation, see ./lang_code for full list
+    dl-youtube-cc wgNiGj1nGYE --caption_num=1 --translation 'ru' # choose the caption num for original transcript and use russian translation,
     dl-youtube-cc wgNiGj1nGYE --caption_num=1 --caption_num_second=2 # manually choose the original and translation transcript from available caption list
     dl-youtube-cc wgNiGj1nGYE --translation False # without translation
     dl-youtube-cc wgNiGj1nGYE --save_to_file=False # print stuff in console
@@ -263,7 +263,7 @@ def main(
 
     Argument:
     videoID : the video link or the id of youtube video, the string after 'v=' in a youtube video link
-    translation : which will be displayed as original transcript, default to 'zh-Hans' for simplified Chinese, see ./lang_code.json for full list, or pass False to disable translation
+    translation : which will be displayed as original transcript, default to None
     caption_num : choose the caption which will be displayed as original transcript
     caption_num_second : will surpass translation option, choose the caption which will be displayed as translation transcript
     output_file : default to video title
@@ -272,13 +272,8 @@ def main(
     remove_font_tag: remove font tag
     """
     videoID, video_link = parseVideoID(videoID)
-    captionTracks, title = None, None
-    # try:
-    captionTracks, title, yt = get_tracks_title(videoID)
-    # except ex:
-    #     perr("can't not retrive caption, ", " for detail")
-    #     raise
 
+    captionTracks, title, yt = get_tracks_title(videoID)
 
     info = partial(print, "INFO: ")
 
@@ -286,6 +281,7 @@ def main(
     for i, caption in enumerate(captionTracks):
         mark = '⭕'
         if caption_num == i:mark = '✔ as original'
+        if translation and translation in format_caption(caption): mark = '✔ as translation'
         if caption_num_second == i: mark = '✔ as translation'
         notice = f"#{i:<2} {mark}"
         info(notice, format_caption(caption))
