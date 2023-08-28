@@ -1,6 +1,6 @@
 Updates:
 -----------------
-3.0.0 fix download error it supports download entire playlist! see [Download the caption of entire playlist](#download-the-caption-of-entire-playlist)
+3.0.0 fix download error and it finally supports download entire playlist! see [Download the caption of entire playlist](#download-the-caption-of-entire-playlist)
 
 
 Try it now!
